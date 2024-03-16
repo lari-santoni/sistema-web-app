@@ -1,0 +1,77 @@
+<div id="reg-container" class="cad-container">
+  <div id="reg-file" class="cad-file">
+    <div id="reg-page" class="cad-page">
+      <header id="reg-header">
+        <h1>Dados do professor</h1>
+      </header>
+      <form id="reg-form" (ngSubmit)="regProfessor()" #form="ngForm">
+        <p>Nome</p>
+        <div class="div-input">
+          <input
+            id="reg-fname"
+            class="form-input"
+            type="text"
+            required
+            ngModel
+            name="profName"
+            #profName="ngModel"
+            placeholder="Nome completo do professor"
+            [(ngModel)]="register.name"
+          />
+        </div>
+        <div>
+          <div *ngIf="profName.touched && profName.invalid" class="validation">
+            <div *ngIf="profName.hasError('required')">Nome é obrigatório</div>
+          </div>
+        </div>
+        <p>E-mail</p>
+        <div class="div-input">
+          <input
+            id="reg-email"
+            class="form-input"
+            type="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            required
+            ngModel
+            name="profEmail"
+            #profEmail="ngModel"
+            placeholder="email.professor@exemplo.com"
+            [(ngModel)]="register.email"
+          />
+        </div>
+        <div>
+          <div
+            *ngIf="profEmail.touched && profEmail.invalid"
+            class="validation"
+          >
+            <div *ngIf="profEmail.hasError('required')">
+              E-mail é obrigatório
+            </div>
+            <div *ngIf="profEmail.hasError('pattern')">
+              Formato de e-mail inválido
+            </div>
+          </div>
+        </div>
+        <p>Data de nascimento</p>
+        <div class="div-input">
+          <input
+            id="reg-data"
+            class="form-input"
+            type="date"
+            required
+            ngModel
+            name="ProfBirthday"
+            #ProfBirthday="ngModel"
+            placeholder="dd/mm/aaaa"
+            [(ngModel)]="register.birthday"
+          />
+        </div>
+        <div class="div-longButton">
+          <button [disabled]="!form.valid" class="long-button" type="submit">
+            Cadastrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

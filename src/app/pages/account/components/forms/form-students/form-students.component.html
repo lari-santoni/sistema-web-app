@@ -1,0 +1,268 @@
+<div id="student-container" class="cad-container">
+  <div id="student-file" class="cad-file">
+    <div id="student-page" class="cad-page">
+      <header id="student-header">
+        <h1>Dados da criança</h1>
+      </header>
+      <form (ngSubmit)="studentRegister()" #formStudent="ngForm">
+        <p>Nome</p>
+        <div class="div-input">
+          <input
+            id="student-fname"
+            class="form-input"
+            type="text"
+            required
+            ngModel
+            name="studentName"
+            #studentName="ngModel"
+            placeholder="Nome completo do aluno"
+            [(ngModel)]="regStudent.name"
+          />
+        </div>
+        <div>
+          <div
+            *ngIf="studentName.touched && studentName.invalid"
+            class="validation"
+          >
+            <div *ngIf="studentName.hasError('required')">
+              Nome é obrigatório
+            </div>
+          </div>
+        </div>
+        <div class="same-row">
+          <div class="same-column">
+            <p>Idade</p>
+            <div class="div-input">
+              <input
+                id="student-age"
+                class="form-input"
+                type="text"
+                required
+                ngModel
+                name="studentAge"
+                #studentAge="ngModel"
+                placeholder="Idade do aluno"
+                [(ngModel)]="regStudent.age"
+              />
+            </div>
+            <div>
+              <div
+                *ngIf="studentAge.touched && studentAge.invalid"
+                class="validation"
+              >
+                <div *ngIf="studentAge.hasError('required')">
+                  Idade é obrigatória
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="same-column">
+            <p class="student-radio">Gênero</p>
+            <div class="student-radio">
+              <div>
+                <input
+                  id="fem"
+                  class="input-gender"
+                  type="radio"
+                  required
+                  ngModel
+                  name="studentGender"
+                  value="feminino"
+                  #studentGender="ngModel"
+                  [(ngModel)]="regStudent.gender"
+                />
+                <label for="fem">Feminino</label>
+              </div>
+              <div>
+                <input
+                  class="input-gender"
+                  id="mas"
+                  type="radio"
+                  required
+                  ngModel
+                  name="studentGender"
+                  value="masculino"
+                  #studentGender="ngModel"
+                  [(ngModel)]="regStudent.gender"
+                />
+                <label for="mas">Masculino</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>Cor/Etnia</p>
+        <div class="halfWid-input">
+          <select
+            id="student-etnia"
+            class="select-input"
+            required
+            ngModel
+            name="studentEthnicity"
+            #studentEthnicity="ngModel"
+            [(ngModel)]="regStudent.ethnicity"
+          >
+            <option selected value="">Selecione uma opção</option>
+            <option value="Branca">Branca</option>
+            <option value="Preta">Preta</option>
+            <option value="Parda">Parda</option>
+            <option value="Amarela">Amarela</option>
+            <option value="Indígena">Indígena</option>
+          </select>
+        </div>
+        <div>
+          <div
+            *ngIf="studentEthnicity.touched && studentEthnicity.invalid"
+            class="validation"
+          >
+            <div *ngIf="studentEthnicity.hasError('required')">
+              Etnia é obrigatória
+            </div>
+          </div>
+        </div>
+        <p>Nome da escola</p>
+        <div class="div-input">
+          <input
+            id="student-sname"
+            class="form-input"
+            type="text"
+            required
+            ngModel
+            name="studentSchool"
+            #studentSchool="ngModel"
+            placeholder="Escola que a criança estuda"
+            [(ngModel)]="regStudent.school"
+          />
+        </div>
+        <div>
+          <div
+            *ngIf="studentSchool.touched && studentSchool.invalid"
+            class="validation"
+          >
+            <div *ngIf="studentSchool.hasError('required')">
+              Nome da escola é obrigatório
+            </div>
+          </div>
+        </div>
+        <p>Sala</p>
+        <div class="halfWid-input">
+          <input
+            id="student-age"
+            class="form-input"
+            type="text"
+            required
+            ngModel
+            name="studenClassrom"
+            #studenClassrom="ngModel"
+            placeholder="Número da sala"
+            [(ngModel)]="regStudent.classrom"
+          />
+        </div>
+        <div>
+          <div
+            *ngIf="studenClassrom.touched && studenClassrom.invalid"
+            class="validation"
+          >
+            <div *ngIf="studenClassrom.hasError('required')">
+              Número da sala é obrigatório
+            </div>
+          </div>
+        </div>
+        <p>Professor</p>
+        <div class="div-input">
+          <input
+            id="student-pname"
+            class="form-input"
+            type="text"
+            required
+            ngModel
+            name="studentProfessor"
+            #studentProfessor="ngModel"
+            placeholder="Nome completo do professor responsável"
+            [(ngModel)]="regStudent.professorId"
+          />
+        </div>
+        <div>
+          <div
+            *ngIf="studentProfessor.touched && studentProfessor.invalid"
+            class="validation"
+          >
+            <div *ngIf="studentProfessor.hasError('required')">
+              Professor é obrigatório
+            </div>
+          </div>
+        </div>
+        <p>Diagnóstico</p>
+        <div class="student-box">
+          <textarea
+            id="student-diagnostic"
+            class="diagnostic"
+            ngModel
+            name="studentDiagnostic"
+            #studentDiagnostic="ngModel"
+            placeholder="Descreva quais doenças a criança possui caso haja alguma"
+            [(ngModel)]="regStudent.diagnostic"
+          ></textarea>
+        </div>
+        <p>Avaliação</p>
+        <div class="halfWid-input">
+          <select
+            id="validation"
+            class="select-input"
+            required
+            ngModel
+            name="studentAssessment"
+            #studentAssessment="ngModel"
+            [(ngModel)]="regStudent.assessment"
+          >
+            <option selected value="">Selecione uma opção</option>
+            <option value="1">1ª (primeira)</option>
+            <option value="2">2ª (segunda)</option>
+            <option value="3">3ª (terceira)</option>
+            <option value="4">4ª (quarta)</option>
+            <option value="Outra">Outra</option>
+          </select>
+        </div>
+        <div>
+          <div
+            *ngIf="studentAssessment.touched && studentAssessment.invalid"
+            class="validation"
+          >
+            <div *ngIf="studentAssessment.hasError('required')">
+              Número da avaliação é obrigatória
+            </div>
+          </div>
+        </div>
+        <div *ngIf="studentAssessment.value == 'Outra'">
+          <p>Digite o nº da qtde da avaliação</p>
+          <div class="halfWid-input">
+            <input
+              id="validation-num"
+              class="form-input"
+              type="text"
+              required
+              ngModel
+              name="otherAssessment"
+              #otherAssessment="ngModel"
+              [(ngModel)]="regStudent.otherAssessment"
+            />
+          </div>
+          <div>
+            <div
+              *ngIf="otherAssessment.touched && otherAssessment.invalid"
+              class="validation"
+            >
+              <div *ngIf="otherAssessment.hasError('required')">
+                Número da avaliação é obrigatória
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="div-longButton">
+          <button [disabled]="!formStudent.valid" class="long-button">
+            Cadastrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

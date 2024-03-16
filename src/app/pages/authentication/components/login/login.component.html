@@ -1,0 +1,32 @@
+<div id="login-container" class="log-container">
+  <div id="login-base" class="log-background">
+    <header id="login-head">
+      <h1 class="log-name">Login</h1>
+    </header>
+    <form id="login-input" class="log-input" (ngSubmit)="getToken()">
+      <div id="login-user" class="log-res">
+        <input
+          id="input-user"
+          class="answer"
+          type="email"
+          name="userEmail"
+          placeholder="Usuário"
+          [(ngModel)]="login.email"
+        />
+      </div>
+      <div id="login-pass" class="log-res">
+        <input
+          id="input-pass"
+          class="answer"
+          type="password"
+          name="userPassword"
+          placeholder="Senha"
+          [(ngModel)]="login.password"
+        />
+      </div>
+      <div id="login-button" class="div-longButton">
+        <button class="long-button" type="submit">Entrar</button>
+      </div>
+    </form>
+  </div>
+</div>

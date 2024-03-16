@@ -1,0 +1,28 @@
+<div id="listProf-container" class="cad-container">
+    <div id="listProf-file" class="cad-file">
+        <form>
+            <div id="listProf-page" class="cad-page">
+                <header class="list-header">
+                    <h1>Professores cadastrados</h1>
+                </header>
+                <table class="list-table">
+                    <thead class="list-th">
+                        <tr>
+                            <th>Professores</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list-td">
+                        @for (professor of listProfessors; track professor.id) {
+                            <tr>
+                                <td>{{professor.name}}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="div-shortButton">
+                    <button class="short-button">Voltar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
