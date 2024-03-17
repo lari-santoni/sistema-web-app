@@ -10,6 +10,7 @@ import { ListProfessorsComponent } from './pages/account/components/list/list-pr
 import { ChecklistComponent } from './pages/account/components/forms/checklist/checklist.component';
 import { ReportComponent } from './pages/account/components/forms/report/report.component';
 import { UpdateComponent } from './pages/authentication/components/update/update.component';
+import { ProfessorUpdateComponent } from './pages/account/components/update-pass/professor-update/professor-update.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'update', component: UpdateComponent },
   { path: 'student', component: FormStudentsComponent},
   { path: 'professor-home', component: StudentSelectComponent },
+  { path: 'update-prof', component: ProfessorUpdateComponent},
   { path: 'adm-home', component: ProfessorSelectComponent },
   { path: 'list-students', component: ListStudentsComponent },
   { path: 'list-professors', component: ListProfessorsComponent },

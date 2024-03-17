@@ -2,7 +2,7 @@
   <div id="reg-file" class="cad-file">
     <div id="reg-page" class="cad-page">
       <header id="reg-header">
-        <h1>Dados do professor</h1>
+        <h1>Cadastrar professor</h1>
       </header>
       <form id="reg-form" (ngSubmit)="regProfessor()" #form="ngForm">
         <p>Nome</p>
@@ -58,6 +58,8 @@
             id="reg-data"
             class="form-input"
             type="date"
+            min="1900-01-01"
+            max="3999-12-31"
             required
             ngModel
             name="ProfBirthday"
