@@ -1,6 +1,6 @@
 export class StudentListResponse {
-    professorName: string = '';
-    studentsList: StudentList[] = []
+    name: string = '';
+    Students: StudentList[] = []
 }
 
 export class StudentList {

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 import { StudentListResponse } from '../models/students-response';
 import { Observable } from 'rxjs';
-import { Professor } from '../models/professors-response';
+import { BuscarAlunosRequest, Professor } from '../models/professors-response';
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +20,15 @@ export class ListService {
     return this.http.get<Professor[]>(`${this.urlBase}/professors`)
   }
 
-  public getStudents(): Observable<StudentListResponse> {
+  public getStudents(req: BuscarAlunosRequest): Observable<StudentListResponse> {
 
     const token = localStorage.getItem('token') || {}
 
-    let head = new HttpHeaders().set('content-type', 'application/json')
+    let head = new HttpHeaders()
+        .set('Content-Type', 'application/json')
         .set('Access-Control-Allow-Origin', '*')
         .set('Authorization', `Bearer ${token}`)
 
-    return this.http.get<StudentListResponse>(`${this.urlBase}/list-student`, { headers: head })
+    return this.http.post<StudentListResponse>(`${this.urlBase}/list-student`, req, { headers: head })
   }
 }

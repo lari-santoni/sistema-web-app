@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'adm-home', component: ProfessorSelectComponent },
   { path: 'list-students', component: ListStudentsComponent },
   { path: 'list-professors', component: ListProfessorsComponent },
-  { path: 'checklist', component: ChecklistComponent },
+  { path: 'checklist/:id_student', component: ChecklistComponent },
   { path: 'report', component: ReportComponent}
 ];
 

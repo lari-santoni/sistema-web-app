@@ -20,5 +20,13 @@ export class IdentifiedCharacteristics {
 export class Quiz {
   id: string = ""
   type: string = ""
-  quest: string = ""
+  question: string = ""
+  maxAge?: number
+  minAge?: number
+}
+
+export class StudentsQuestionaire{
+  studentId: string = ""
+  questId: string = ""
+  answer: string = ""
 }

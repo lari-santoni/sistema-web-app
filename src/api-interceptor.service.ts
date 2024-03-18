@@ -10,7 +10,6 @@ import { environment } from './environments/environment.development';
 export class TokenInterceptor implements HttpInterceptor {
 
   constructor() {
-    console.log('teste constructor interceptor')
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

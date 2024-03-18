@@ -1,6 +1,8 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { ListService } from '../../../services/list.service';
 import { StudentListResponse } from '../../../models/students-response';
+import { BuscarAlunosRequest } from '../../../models/professors-response';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-list-students',
@@ -10,6 +12,8 @@ import { StudentListResponse } from '../../../models/students-response';
 
 export class ListStudentsComponent implements OnInit, AfterViewInit {
   listStudents: StudentListResponse = new StudentListResponse()
+  professorName: string = ''
+  professorId: string = ''
 
   constructor(private listSevice: ListService) {}
 
@@ -22,7 +26,10 @@ export class ListStudentsComponent implements OnInit, AfterViewInit {
   }
 
   getStudents() {
-    this.listSevice.getStudents().subscribe({
+    this.getLocal()
+
+    const req: BuscarAlunosRequest = { id: this.professorId }
+    this.listSevice.getStudents(req).subscribe({
       next: (response) => {
         this.listStudents = response
       },
@@ -30,5 +37,10 @@ export class ListStudentsComponent implements OnInit, AfterViewInit {
         console.log(response)
       }
     })
+  }
+
+  getLocal() {
+    this.professorName = localStorage.getItem('ProfessorName') || ''
+    this.professorId = localStorage.getItem('ProfessorCod') || ''
   }
 }

@@ -3,3 +3,7 @@ export class Professor {
   name: string = "";
   email: string = "";
 }
+
+export class BuscarAlunosRequest {
+  id: string = "";
+}

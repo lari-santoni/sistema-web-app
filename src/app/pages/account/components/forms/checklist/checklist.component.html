@@ -1,55 +1,123 @@
 <div id="check-container" class="cad-container">
-    <div id="check-file" class="report-file">
-        <div id="check-page" class="cad-page">
-            <div>
-                <p class="text-warning">*Professor, confira se os dados e as respostas estão todas corretas antes de enviar!</p>
-                <header  class="list-header">
-                    <h3>CHECKLIST DE INDICADORES DE CARACTERÍSTICAS SUSPEITAS EM PRÉ-ESCOLARES</h3>
-                </header>
-                <div  class="text">
-                    <form>
-                        <div class="same-row">
-                            <div class="same-column">
-                                <p>Nome: {{basicInfo.studentName}}</p>
-                                <p>Professor: {{basicInfo.professorName}}</p>
-                            </div>
-                            <div class="same-column">
-                                <p>Idade: {{basicInfo.studentAge}}</p>
-                            </div>
-                        </div>
-                        <table class="check-table">
-                            <thead class="check-th">
-                                <tr>
-                                    <th rowspan="2">Características</th>
-                                    <th colspan="5">Frequência</th>
-                                </tr>
-                                <tr>
-                                    <th>Nunca</th>
-                                    <th>As vezes</th>
-                                    <th>Frequente</th>
-                                    <th>Sempre</th>
-                                    <th>Não observado</th>
-                                </tr>
-                            </thead>
-                            <tbody  class="check-td">
-                                @for (question of questions; track question.id) {
-                                    <tr>
-                                        <td>{{question.quest}}</td>
-                                        <td><input class="check-radio" type="radio" name="quest{{$index+1}}" id="never"></td>
-                                        <td><input class="check-radio" type="radio" name="quest{{$index+1}}" id="some"></td>
-                                        <td><input class="check-radio" type="radio" name="quest{{$index+1}}" id="often"></td>
-                                        <td><input class="check-radio" type="radio" name="quest{{$index+1}}" id="always"></td>
-                                        <td><input class="check-radio" type="radio" name="quest{{$index+1}}" id="always"></td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </form>
-                </div>
+  <div id="check-file" class="report-file">
+    <div id="check-page" class="cad-page">
+      <div>
+        <p class="text-warning">
+          *Professor, confira se os dados e as respostas estão todas corretas
+          antes de enviar!
+        </p>
+        <header class="list-header">
+          <h3>
+            CHECKLIST DE INDICADORES DE CARACTERÍSTICAS SUSPEITAS EM
+            PRÉ-ESCOLARES
+          </h3>
+        </header>
+        <div class="text">
+          <div class="same-row">
+            <div class="same-column">
+              <p>Nome: {{ basicInfo.studentName }}</p>
+              <p>Professor: {{ basicInfo.professorName }}</p>
             </div>
+            <div class="same-column">
+              <p>Idade: {{ basicInfo.studentAge }}</p>
+            </div>
+          </div>
+          <form (ngSubmit)="studentQuestRegister()" #formQuestReg="ngForm">
+            <table class="check-table">
+              <thead class="check-th">
+                <tr>
+                  <th rowspan="2">Características</th>
+                  <th colspan="5">Frequência</th>
+                </tr>
+                <tr>
+                  <th>Nunca</th>
+                  <th>As vezes</th>
+                  <th>Frequente</th>
+                  <th>Sempre</th>
+                  <th>Não observado</th>
+                </tr>
+              </thead>
+              <tbody class="check-td">
+                @for (question of questions; track question.id) {
+                <tr>
+                  <td>{{ question.question }}</td>
+                  <td>
+                    <input
+                      id="{{ $index + 1 }}"
+                      class="check-radio"
+                      type="radio"
+                      required
+                      ngModel
+                      name="quest{{ $index + 1 }}"
+                      value="never{{ $index + 1 }}"
+                      #quest{{$index+1}}="ngModel"
+                      [(ngModel)]="studentQuest.answer"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      id="{{ $index + 1 }}"
+                      class="check-radio"
+                      type="radio"
+                      required
+                      ngModel
+                      name="quest{{ $index + 1 }}"
+                      value="some{{ $index + 1 }}"
+                      #{{question.id}}="ngModel"
+                      [(ngModel)]="studentQuest.answer"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      id="{{ $index + 1 }}"
+                      class="check-radio"
+                      type="radio"
+                      required
+                      ngModel
+                      name="quest{{ $index + 1 }}"
+                      value="often{{ $index + 1 }}"
+                      #{{question.id}}="ngModel"
+                      [(ngModel)]="studentQuest.answer"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      id="{{ $index + 1 }}"
+                      class="check-radio"
+                      type="radio"
+                      required
+                      ngModel
+                      name="quest{{ $index + 1 }}"
+                      value="always{{ $index + 1 }}"
+                      #{{question.id}}="ngModel"
+                      [(ngModel)]="studentQuest.answer"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      id="{{ $index + 1 }}"
+                      class="check-radio"
+                      type="radio"
+                      required
+                      ngModel
+                      name="quest{{ $index + 1 }}"
+                      value="empty{{ $index + 1 }}"
+                      #{{question.id}}="ngModel"
+                      [(ngModel)]="studentQuest.answer"
+                    />
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+            <div class="div-reportButton">
+              <button [disabled]="!formQuestReg.valid" class="short-button">
+                Enviar
+              </button>
+            </div>
+          </form>
         </div>
-        <div class="div-reportButton">
-            <button class="short-button">Enviar</button>
-        </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -6,7 +6,7 @@ export class RegisterStudent {
   school: string = ''
   classrom: string = ''
   professorId: string = ''
-  diagnostic: string = ''
+  diagnostic?: string
   assessment: string = ''
   otherAssessment?: string
 }

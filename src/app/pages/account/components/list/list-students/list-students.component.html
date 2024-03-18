@@ -1,32 +1,34 @@
 <div id="listStu-container" class="cad-container">
-    <div id="listStu-file" class="cad-file">
-        <form>
-            <div id="listStu-page" class="cad-page">
-                <header class="list-header">
-                    <h1>Alunos do Professor: {{listStudents.professorName}}</h1>
-                </header>
-                <table class="list-table">
-                    <thead class="list-th">
-                        <tr>
-                            <th>Aluno</th>
-                            <th>Ficha</th>
-                            <th>Relatório</th>
-                        </tr>
-                    </thead>
-                    <tbody class="list-td">
-                        @for (student of listStudents.studentsList; track student.id) {
-                            <tr>
-                                <td><a href="">{{student.name}}</a></td>
-                                <td><a>Visualizar</a></td>
-                                <td><a>Editar</a></td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                <div class="div-shortButton">
-                    <button class="short-button">Voltar</button>
-                </div>
-            </div>
-        </form>
-    </div>
+  <div id="listStu-file" class="cad-file">
+    <form>
+      <div id="listStu-page" class="cad-page">
+        <header class="list-header">
+          <h1>Alunos do Professor: {{ listStudents.name }}</h1>
+        </header>
+        <table class="list-table">
+          <thead class="list-th">
+            <tr>
+              <th>Aluno</th>
+              <th>Ficha</th>
+              <th>Relatório</th>
+            </tr>
+          </thead>
+          <tbody class="list-td">
+            @for (student of listStudents.Students; track student.id) {
+            <tr>
+              <td>
+                <a href="">{{ student.name }}</a>
+              </td>
+              <td><a>Visualizar</a></td>
+              <td><a>Editar</a></td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        <div class="div-shortButton">
+          <button class="short-button">Voltar</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

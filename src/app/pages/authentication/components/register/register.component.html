@@ -68,6 +68,16 @@
             [(ngModel)]="register.birthday"
           />
         </div>
+        <div>
+          <div
+            *ngIf="ProfBirthday.touched && ProfBirthday.invalid"
+            class="validation"
+          >
+            <div *ngIf="ProfBirthday.hasError('required')">
+              Data é obrigatória
+            </div>
+          </div>
+        </div>
         <div class="div-longButton">
           <button [disabled]="!form.valid" class="long-button" type="submit">
             Cadastrar

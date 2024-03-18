@@ -11,18 +11,23 @@ import { NgForm } from '@angular/forms';
 })
 export class FormStudentsComponent {
   regStudent: RegisterStudent = new RegisterStudent()
+  id_student: string = ''
 
-  constructor(private formService: PostFormsService, private router: Router) {}
+  constructor(private formService: PostFormsService, private router: Router) {
+    this.regStudent.professorId = localStorage.getItem('ProfessorName') || ''
+  }
 
   ngOnInit(): void {}
 
   @ViewChild('formStudent') formStudent!: NgForm;
 
   studentRegister() {
+    this.regStudent.professorId = localStorage.getItem('ProfessorCod') || ''
+
     this.formService.registerStudents(this.regStudent).subscribe({
       next: (response) => {
-        console.log(response)
-        this.router.navigate(['/checklist'])
+        this.id_student = response.id
+        this.router.navigate(['/checklist', this.id_student])
       },
       error: (response) => {
         console.log(response)
