@@ -29,7 +29,6 @@ export class RegisterComponent {
         this.form.reset()
       },
       error: (response) => {
-        console.log(response)
         if(response.error.statusCode === 401) {
           this.router.navigate(['/'])
         }

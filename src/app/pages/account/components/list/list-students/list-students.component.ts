@@ -3,6 +3,7 @@ import { ListService } from '../../../services/list.service';
 import { StudentListResponse } from '../../../models/students-response';
 import { BuscarAlunosRequest } from '../../../models/professors-response';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-students',
@@ -15,10 +16,14 @@ export class ListStudentsComponent implements OnInit, AfterViewInit {
   professorName: string = ''
   professorId: string = ''
 
-  constructor(private listSevice: ListService) {}
+  constructor(private listSevice: ListService, private router: Router) {}
 
   ngOnInit(): void {
     
+  }
+
+  backPage() {
+    this.router.navigate(['/professor-home'])
   }
 
   ngAfterViewInit(): void {

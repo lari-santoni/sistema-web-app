@@ -6,7 +6,7 @@
       </header>
       <form
         id="update-form"
-        (ngSubmit)="updateProfessor()"
+        (ngSubmit)="upProfessor()"
         #formUpdateProf="ngForm"
       >
         <p>Nome</p>
@@ -50,51 +50,47 @@
             </div>
           </div>
         </div>
-        <p>Data de nascimento</p>
-        <div class="div-input">
-          <input
-            id="update-data"
-            class="form-input"
-            type="text"
-            placeholder="dd/mm/aaaa"
-            disabled
-          />
-        </div>
         <p>Senha</p>
         <div class="div-input">
           <input
             id="update-password"
             class="form-input"
-            type="text"
-            type="text"
+            type="password"
             required
             ngModel
             name="upPassword"
             #upPassword="ngModel"
+            placeholder="Nova senha"
             [(ngModel)]="upProfData.password"
           />
         </div>
-        @if(!compare) {
-        <label for="">{{ errorMessage }}</label>
-        }
         <p>Confirmar senha</p>
         <div class="div-input">
           <input
             id="update-cpassword"
             class="form-input"
-            type="text"
-            type="text"
+            type="password"
             required
             ngModel
             name="confirmPass"
             #confirmPass="ngModel"
+            placeholder="Confirmar nova senha"
             [(ngModel)]="upProfData.confirmPassword"
           />
         </div>
+        @if(!compare) {
+        <label class="validation" for="">{{ errorMessage }}</label>
+        }
       </form>
     </div>
     <div class="div-longButton">
-      <button class="long-button" (click)="enviarFormulario()">Salvar</button>
+      <button
+        [disabled]="!formUpdateProf.valid"
+        class="long-button"
+        (click)="sendForm()"
+      >
+        Salvar
+      </button>
     </div>
   </div>
 </div>

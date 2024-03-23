@@ -32,6 +32,6 @@ export class UpdatesService {
         .set('Access-Control-Allow-Origin', '*')
         .set('Authorization', `Bearer ${token}`)
 
-    return this.http.post<any>(`${this.urlBase}/update-data`, data, { headers: head })
+    return this.http.put<any>(`${this.urlBase}/update-data`, data, { headers: head })
   }
 }

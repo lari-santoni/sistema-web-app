@@ -131,6 +131,16 @@ input[type=number] {
     border: 0;
 }
 
+input[type=password] {
+    border: none;
+    background: transparent;
+    outline: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 a:link, a:visited {
     text-decoration: none;
     color: black;

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UpdateProfData } from '../../../models/update-professor';
 import { UpdatesService } from '../../../services/updates.service';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-professor-update',
@@ -12,7 +14,7 @@ export class ProfessorUpdateComponent implements OnInit {
   errorMessage?: string
   compare: boolean = true
 
-  constructor(private updateService: UpdatesService) {}
+  constructor(private updateService: UpdatesService, private router: Router) {}
 
   ngOnInit(): void {
     this.getProfessor()
@@ -35,7 +37,21 @@ export class ProfessorUpdateComponent implements OnInit {
     })
   }
 
-  updateProfessor() {}
+  @ViewChild('formUpdateProf') formUpdateProf!: NgForm
+
+  upProfessor() {
+    this.updateService.updateProfessor(this.upProfData).subscribe({
+      next: (response) => {
+        alert("Dados alterados com sucesso")
+        window.location.reload()
+      },
+      error: (response) => {
+        if(response.error.statusCode === 401) {
+          this.router.navigate(['/'])
+        }
+      }
+    })
+  }
 
   comparePassword() {
     this.compare = this.upProfData.password === this.upProfData.confirmPassword
@@ -44,12 +60,11 @@ export class ProfessorUpdateComponent implements OnInit {
     }
   }
 
-  enviarFormulario() {
+  sendForm() {
     this.comparePassword()
 
     if(this.compare) {
-      console.log('enviado')
-      // Chamar o metodo de update
+      this.upProfessor()
     }
   }
 
