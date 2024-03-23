@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   login: LoginRequest = new LoginRequest()
+  mError: string = ''
 
   constructor(private loginService: LoginService, private router: Router) {}
 
@@ -31,7 +32,7 @@ export class LoginComponent {
         }
       },
       error: (response) => {
-        console.log(response)
+        this.mError = response.error.message
       }
     })
   }

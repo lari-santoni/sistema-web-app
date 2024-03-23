@@ -26,6 +26,17 @@ html, body {
     margin: 0;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input:-webkit-autofill:valid,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-transition-delay: 99999s;
+}
+
 .div-input {
     width: 100%;
     border: 1px solid black;
@@ -37,6 +48,11 @@ html, body {
 }
 
 .form-input {
+    width: 100%;
+    text-indent: 10px;
+}
+
+.form-inputUp {
     width: 100%;
     text-indent: 10px;
 }
@@ -348,7 +364,7 @@ a:link, a:visited {
     margin-top: 70px;
 }
 
-.button-print {
+.button-white {
     background-color: #FFFFFF;
     color: #08839E;
     height: 40px;
@@ -363,7 +379,7 @@ a:link, a:visited {
     }
 }
 
-.button-sent {
+.button-green {
     background-color: #08839E;
     color: #FFFFFF;
     height: 40px;
@@ -376,7 +392,7 @@ a:link, a:visited {
     }
 }
 
-.div-reportButton {
+.div-duoButton {
     padding-top: 30px;
     display: flex;
     justify-content: flex-end;

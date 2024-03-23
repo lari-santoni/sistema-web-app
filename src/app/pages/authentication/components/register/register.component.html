@@ -78,9 +78,12 @@
             </div>
           </div>
         </div>
-        <div class="div-longButton">
-          <button [disabled]="!form.valid" class="long-button" type="submit">
+        <div class="div-duoButton">
+          <button [disabled]="!form.valid" class="button-green" type="submit">
             Cadastrar
+          </button>
+          <button type="button" (click)="backHomeA()" class="button-white">
+            Voltar
           </button>
         </div>
       </form>

@@ -15,17 +15,19 @@ export class RegisterComponent {
 
   constructor(private registerService: RegisterService, private router: Router) {}
 
-  ngOnInit(): void {}
+  backHomeA() {
+    this.router.navigate(['/adm-home'])
+  }
 
   @ViewChild('form') form!: NgForm;
 
   regProfessor() {
     this.registerService.registerProfessor(this.register).subscribe({
       next: (response) => {
-        const prof = response.name
+        const prof = response.email
         const pass = response.password
         // Retornar senha pra tela
-        alert("A senha gerada do professor "+prof+" é "+pass)
+        alert("A senha gerada para o email: " +prof+" é "+pass)
         this.form.reset()
       },
       error: (response) => {

@@ -1,30 +1,58 @@
 <div id="report-container" class="cad-container">
-    <div id="report-" class="report-file">
-        <form>
-            <div class="cad-page">
-                <header class="report-header">
-                    <h2>RELATÓRIO DAS SUSPEITAS IDENTIFICADAS</h2>
-                </header>
-                <div class="report-text">
-                    <p><b>Descrição da demanda</b></p>
-                    <p>{{report.studentName}} é aluno das professoras {{report.professorName}} na escola {{report.school}}. É uma criança que gosta de brincar e participa das atividades da classe. É envolvido/a nas brincadeiras principalmente relacionadas com (música, atividade física, movimentos, pinturas, desenhos, corrida, gestos). Tem autonomia na hora de alimentação e apresenta bom relacionamento com os colegas e professores.</p>
-                    <p>Há {{report.timeClass}} durante as (aulas/ atividades/ brincadeiras na escola) tem se verificado nela algumas caraterísticas nas áreas do seu desenvolvimento que chamam atenção. Ela tem se mostrado como uma criança que (mencionar no máximo 5 características – principalmente as que tiverem pontuação de muito frequentemente). O sistema de identificação de características suspeitas de transtornos do neurodesenvolvimento em crianças pequenas que está implementado na escola, indicou que há probabilidade da criança apresentar (alto, médio, baixo) risco para (apresentar o 1 transtorno com as maiores características mencionadas); (alto, médio, baixo) para (apresentar o 2 transtorno com as maiores características); (alto, médio, baixo) para (apresentar o 3 transtorno com as maiores características); (alto, médio, baixo) para (apresentar o 4 transtorno com as maiores características)</p><br/>
-                    <p><b>Recomendações</b></p>
-                    <p>•	Foi aconselhado aos cuidadores para o monitoramento das características<br/>
-                        •	Que seja realizada uma avaliação diagnóstica por um profissional especializado na criança.<br/>
-                        •	A criança foi encaminhada para o serviço de Psicologia da escola
-                    </p>
-                    <div class="report-sign">
-                        (Local, data e horário da avaliação)
-                        <hr class="report-hr"/>
-                        <p>Professor responsável pelo relatório</p>
-                    </div>
-                </div>
-            </div>
-            <div class="div-reportButton">
-                <button class="button-print">Imprimir</button>
-                <button class="button-sent">Voltar</button>
-            </div>
-        </form>
-    </div>
+  <div id="report-" class="report-file">
+    <form>
+      <div class="cad-page">
+        <header class="report-header">
+          <h2>RELATÓRIO DAS SUSPEITAS IDENTIFICADAS</h2>
+        </header>
+        <div class="report-text">
+          <p><b>Descrição da demanda</b></p>
+          <p>
+            {{ report.studentName }} é aluno das professoras
+            {{ report.professorName }} na escola {{ report.school }}. É uma
+            criança que gosta de brincar e participa das atividades da classe. É
+            envolvido/a nas brincadeiras principalmente relacionadas com
+            (música, atividade física, movimentos, pinturas, desenhos, corrida,
+            gestos). Tem autonomia na hora de alimentação e apresenta bom
+            relacionamento com os colegas e professores.
+          </p>
+          <p>
+            Há {{ report.timeClass }} durante as (aulas/ atividades/
+            brincadeiras na escola) tem se verificado nela algumas
+            caraterísticas nas áreas do seu desenvolvimento que chamam atenção.
+            Ela tem se mostrado como uma criança que (mencionar no máximo 5
+            características – principalmente as que tiverem pontuação de muito
+            frequentemente). O sistema de identificação de características
+            suspeitas de transtornos do neurodesenvolvimento em crianças
+            pequenas que está implementado na escola, indicou que há
+            probabilidade da criança apresentar (alto, médio, baixo) risco para
+            (apresentar o 1 transtorno com as maiores características
+            mencionadas); (alto, médio, baixo) para (apresentar o 2 transtorno
+            com as maiores características); (alto, médio, baixo) para
+            (apresentar o 3 transtorno com as maiores características); (alto,
+            médio, baixo) para (apresentar o 4 transtorno com as maiores
+            características)
+          </p>
+          <br />
+          <p><b>Recomendações</b></p>
+          <p>
+            • Foi aconselhado aos cuidadores para o monitoramento das
+            características<br />
+            • Que seja realizada uma avaliação diagnóstica por um profissional
+            especializado na criança.<br />
+            • A criança foi encaminhada para o serviço de Psicologia da escola
+          </p>
+          <div class="report-sign">
+            (Local, data e horário da avaliação)
+            <hr class="report-hr" />
+            <p>Professor responsável pelo relatório</p>
+          </div>
+        </div>
+      </div>
+      <div class="div-duoButton">
+        <button class="button-white">Imprimir</button>
+        <button class="button-green">Voltar</button>
+      </div>
+    </form>
+  </div>
 </div>

@@ -20,6 +20,10 @@ export class ProfessorUpdateComponent implements OnInit {
     this.getProfessor()
   }
 
+  backHomeProf(){
+    this.router.navigate(['/professor-home'])
+  }
+
   getProfessor() {
     const id_professor = localStorage.getItem('ProfessorCod') || ''
     this.updateService.getProfessor(id_professor).subscribe({
@@ -28,7 +32,6 @@ export class ProfessorUpdateComponent implements OnInit {
           id: response.id,
           name: response.name,
           email: response.email,
-          birthday: response.birthday
         }
       },
       error: (response) => {

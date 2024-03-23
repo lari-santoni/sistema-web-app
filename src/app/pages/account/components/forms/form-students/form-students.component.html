@@ -257,9 +257,16 @@
             </div>
           </div>
         </div>
-        <div class="div-longButton">
-          <button [disabled]="!formStudent.valid" class="long-button">
+        <div class="div-duoButton">
+          <button
+            type="submit"
+            [disabled]="!formStudent.valid"
+            class="button-green"
+          >
             Cadastrar
+          </button>
+          <button type="button" (click)="backHomeProf()" class="button-white">
+            Voltar
           </button>
         </div>
       </form>

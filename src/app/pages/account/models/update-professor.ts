@@ -4,5 +4,4 @@ export class UpdateProfData {
   email: string = ''
   password?: string
   confirmPassword?: string
-  birthday: string = ''
 }

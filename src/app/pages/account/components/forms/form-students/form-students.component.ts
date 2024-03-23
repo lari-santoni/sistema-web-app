@@ -17,7 +17,9 @@ export class FormStudentsComponent {
     this.regStudent.professorId = localStorage.getItem('ProfessorName') || ''
   }
 
-  ngOnInit(): void {}
+  backHomeProf(){
+    this.router.navigate(['/professor-home'])
+  }
 
   @ViewChild('formStudent') formStudent!: NgForm;
 

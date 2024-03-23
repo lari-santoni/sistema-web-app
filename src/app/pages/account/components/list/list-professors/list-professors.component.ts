@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListService } from '../../../services/list.service';
 import { Professor } from '../../../models/professors-response';
 import { environment } from '../../../../../../environments/environment.development';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-professors',
@@ -12,10 +13,14 @@ import { environment } from '../../../../../../environments/environment.developm
 export class ListProfessorsComponent implements OnInit {
   listProfessors: Professor[] = []
 
-  constructor(private listService: ListService) {}
+  constructor(private listService: ListService, private router: Router) {}
 
   ngOnInit(): void {
     this.getProfessors()
+  }
+
+  backHomeA() {
+    this.router.navigate(['/adm-home'])
   }
 
   getProfessors() {

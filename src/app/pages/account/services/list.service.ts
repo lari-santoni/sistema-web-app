@@ -16,8 +16,15 @@ export class ListService {
   constructor(private http: HttpClient) { }
 
   public getProfessors(): Observable<Professor[]> {
+
+    const token = localStorage.getItem('token') || {}
+
+    let head = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*')
+    .set('Authorization', `Bearer ${token}`)
     
-    return this.http.get<Professor[]>(`${this.urlBase}/professors`)
+    return this.http.get<Professor[]>(`${this.urlBase}/professors`, {headers: head})
   }
 
   public getStudents(req: BuscarAlunosRequest): Observable<StudentListResponse> {

@@ -45,6 +45,7 @@
         </div>
         <div>
           <div *ngIf="upEmail.touched && upEmail.invalid" class="validation">
+            <div *ngIf="upEmail.hasError('required')">E-mail é obrigatório</div>
             <div *ngIf="upEmail.hasError('pattern')">
               Formato de e-mail inválido
             </div>
@@ -78,18 +79,23 @@
             [(ngModel)]="upProfData.confirmPassword"
           />
         </div>
-        @if(!compare) {
-        <label class="validation" for="">{{ errorMessage }}</label>
-        }
+        <div>
+          @if(!compare) {
+          <label class="validation" for="">{{ errorMessage }}</label>
+          }
+        </div>
       </form>
     </div>
-    <div class="div-longButton">
+    <div class="div-duoButton">
       <button
         [disabled]="!formUpdateProf.valid"
-        class="long-button"
+        class="button-green"
         (click)="sendForm()"
       >
         Salvar
+      </button>
+      <button type="button" (click)="backHomeProf()" class="button-white">
+        Voltar
       </button>
     </div>
   </div>

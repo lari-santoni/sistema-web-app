@@ -11,16 +11,12 @@ import { Router } from '@angular/router';
   styleUrl: './list-students.component.scss'
 })
 
-export class ListStudentsComponent implements OnInit, AfterViewInit {
+export class ListStudentsComponent implements AfterViewInit {
   listStudents: StudentListResponse = new StudentListResponse()
   professorName: string = ''
   professorId: string = ''
 
   constructor(private listSevice: ListService, private router: Router) {}
-
-  ngOnInit(): void {
-    
-  }
 
   backPage() {
     this.router.navigate(['/professor-home'])

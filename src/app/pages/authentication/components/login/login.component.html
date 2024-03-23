@@ -24,6 +24,11 @@
           [(ngModel)]="login.password"
         />
       </div>
+      <div>
+        @if(mError != ''){
+        <label class="validation">{{ mError }}</label>
+        }
+      </div>
       <div id="login-button" class="div-longButton">
         <button class="long-button" type="submit">Entrar</button>
       </div>
