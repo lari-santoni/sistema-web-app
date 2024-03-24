@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
-import { ReportInfo } from '../models/quiz-response';
+import { ReportInfo, StudentsQuestionaire } from '../models/quiz-response';
 import { Observable } from 'rxjs';
 import { Quiz } from '../models/quiz-response';
 
@@ -34,7 +34,19 @@ export class FormsService {
         .set('Access-Control-Allow-Origin', '*')
         .set('Authorization', `Bearer ${token}`)
 
-    return this.http.get<Quiz[]>(`${this.urlBase}/questioraire?age=${age}`, { headers: head })
+    return this.http.get<Quiz[]>(`${this.urlBase}/questionaire?age=${age}`, { headers: head })
+  }
+
+  public addQuizAnswers(answersList: StudentsQuestionaire[]): Observable<any> {
+
+    const token = localStorage.getItem('token') || {}
+
+    let head = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Authorization', `Bearer ${token}`)
+
+    return this.http.post<Quiz[]>(`${this.urlBase}/checklist`, answersList, { headers: head })
   }
 
   getReportAnswers() {

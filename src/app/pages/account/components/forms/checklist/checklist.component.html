@@ -38,72 +38,67 @@
                 </tr>
               </thead>
               <tbody class="check-td">
-                @for (question of questions; track question.id) {
+                @for(quest of questions; track quest.id; let ind = $index) {
                 <tr>
-                  <td>{{ question.question }}</td>
+                  <td>{{ quest.question }}</td>
                   <td>
                     <input
-                      id="{{ $index + 1 }}"
-                      class="check-radio"
                       type="radio"
+                      name="{{ quest.id }}"
+                      id="{{ quest.id }}"
+                      value="NEVER"
+                      class="check-radio"
                       required
                       ngModel
-                      name="quest{{ $index + 1 }}"
-                      value="never{{ $index + 1 }}"
-                      #quest{{$index+1}}="ngModel"
-                      [(ngModel)]="studentQuest.answer"
+                      [(ngModel)]="answersList[ind]"
                     />
                   </td>
                   <td>
                     <input
-                      id="{{ $index + 1 }}"
-                      class="check-radio"
                       type="radio"
+                      name="{{ quest.id }}"
+                      id="{{ quest.id }}"
+                      value="SOME"
+                      class="check-radio"
                       required
                       ngModel
-                      name="quest{{ $index + 1 }}"
-                      value="some{{ $index + 1 }}"
-                      #{{question.id}}="ngModel"
-                      [(ngModel)]="studentQuest.answer"
+                      [(ngModel)]="answersList[ind]"
                     />
                   </td>
                   <td>
                     <input
-                      id="{{ $index + 1 }}"
-                      class="check-radio"
                       type="radio"
+                      name="{{ quest.id }}"
+                      id="{{ quest.id }}"
+                      value="OFTEN"
+                      class="check-radio"
                       required
                       ngModel
-                      name="quest{{ $index + 1 }}"
-                      value="often{{ $index + 1 }}"
-                      #{{question.id}}="ngModel"
-                      [(ngModel)]="studentQuest.answer"
+                      [(ngModel)]="answersList[ind]"
                     />
                   </td>
                   <td>
                     <input
-                      id="{{ $index + 1 }}"
-                      class="check-radio"
                       type="radio"
+                      name="{{ quest.id }}"
+                      id="{{ quest.id }}"
+                      value="ALWAYS"
+                      class="check-radio"
                       required
                       ngModel
-                      name="quest{{ $index + 1 }}"
-                      value="always{{ $index + 1 }}"
-                      #{{question.id}}="ngModel"
-                      [(ngModel)]="studentQuest.answer"
+                      [(ngModel)]="answersList[ind]"
                     />
                   </td>
                   <td>
                     <input
-                      id="{{ $index + 1 }}"
-                      class="check-radio"
                       type="radio"
+                      name="{{ quest.id }}"
+                      id="{{ quest.id }}"
+                      value="NONE"
+                      class="check-radio"
                       required
                       ngModel
-                      name="quest{{ $index + 1 }}"
-                      value="empty{{ $index + 1 }}"
-                      #{{question.id}}="ngModel"
-                      [(ngModel)]="studentQuest.answer"
+                      [(ngModel)]="answersList[ind]"
                     />
                   </td>
                 </tr>

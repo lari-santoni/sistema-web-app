@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsService } from '../../../services/forms.service';
 import { Quiz, ReportInfo, StudentsQuestionaire } from '../../../models/quiz-response';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-checklist',
@@ -13,17 +13,16 @@ export class ChecklistComponent implements OnInit {
   questions: Quiz[] = []
   studentQuest: StudentsQuestionaire = new StudentsQuestionaire()
   listQuest: StudentsQuestionaire[] = []
+  answersList: string[] = []
 
   id_student: string = ''
 
-  constructor(private formsService: FormsService, private route: ActivatedRoute) {}
+  constructor(private formsService: FormsService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.id_student = params['id_student'])
     
     this.getBasicInfo()
-    this.getQuizQuestions()
-
   }
 
   getBasicInfo() {
@@ -34,6 +33,8 @@ export class ChecklistComponent implements OnInit {
           studentAge: response.age,
           professorName: localStorage.getItem('ProfessorName') || ''
         }
+
+        this.getQuizQuestions()
       },
       error: (response) => {
         console.log(response)
@@ -43,7 +44,7 @@ export class ChecklistComponent implements OnInit {
 
   getQuizQuestions() {
 
-    this.formsService.getQuizQuestions("5").subscribe({
+    this.formsService.getQuizQuestions(this.basicInfo.studentAge).subscribe({
       next: (response) => {
         this.questions = response
       },
@@ -53,5 +54,20 @@ export class ChecklistComponent implements OnInit {
     })
   }
   
-  studentQuestRegister() {}
+  studentQuestRegister() {
+    this.answersList.forEach((value, index) => {
+      let newAnswer: StudentsQuestionaire = {
+        studentId: this.id_student,
+        answer: value,
+        questId: this.questions[index].id
+      }
+      this.listQuest.push(newAnswer)
+    })
+
+    this.formsService.addQuizAnswers(this.listQuest).subscribe({
+      next: () => {
+        this.router.navigate(['/report'])
+      }
+    })
+  }
 }
