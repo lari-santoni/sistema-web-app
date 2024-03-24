@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsService } from '../../../services/forms.service';
-import { Quiz, ReportInfo, StudentsQuestionaire } from '../../../models/quiz-response';
+import { Quiz, ReportInfo, StudentsQuestionnaire } from '../../../models/quiz-response';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
@@ -11,10 +11,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class ChecklistComponent implements OnInit {
   basicInfo: ReportInfo = new ReportInfo()
   questions: Quiz[] = []
-  studentQuest: StudentsQuestionaire = new StudentsQuestionaire()
-  listQuest: StudentsQuestionaire[] = []
+  studentQuest: StudentsQuestionnaire = new StudentsQuestionnaire()
+  listQuest: StudentsQuestionnaire[] = []
   answersList: string[] = []
-
   id_student: string = ''
 
   constructor(private formsService: FormsService, private route: ActivatedRoute, private router: Router) {}
@@ -56,7 +55,7 @@ export class ChecklistComponent implements OnInit {
   
   studentQuestRegister() {
     this.answersList.forEach((value, index) => {
-      let newAnswer: StudentsQuestionaire = {
+      let newAnswer: StudentsQuestionnaire = {
         studentId: this.id_student,
         answer: value,
         questId: this.questions[index].id

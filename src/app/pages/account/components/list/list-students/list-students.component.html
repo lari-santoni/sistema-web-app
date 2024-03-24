@@ -17,10 +17,12 @@
             @for (student of listStudents.Students; track student.id) {
             <tr>
               <td>
-                <a href="">{{ student.name }}</a>
+                <a>{{ student.name }}</a>
               </td>
-              <td><a>Visualizar</a></td>
-              <td><a>Editar</a></td>
+              <td class="list-center">
+                <a href="/checklist-update/{{ student.id }}">Editar</a>
+              </td>
+              <td class="list-center"><a>Visualizar</a></td>
             </tr>
             }
           </tbody>

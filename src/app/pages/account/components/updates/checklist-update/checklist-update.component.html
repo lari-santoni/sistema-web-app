@@ -22,7 +22,7 @@
               <p>Idade: {{ basicInfo.studentAge }}</p>
             </div>
           </div>
-          <form (ngSubmit)="studentQuestRegister()" #formQuestReg="ngForm">
+          <form (ngSubmit)="updateQuestionnaire()" #formQuestReg="ngForm">
             <table class="check-table">
               <thead class="check-th">
                 <tr>
@@ -112,6 +112,9 @@
                 class="button-green"
               >
                 Enviar
+              </button>
+              <button type="button" (click)="backHomeP()" class="button-white">
+                Voltar
               </button>
             </div>
           </form>

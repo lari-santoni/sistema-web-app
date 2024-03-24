@@ -25,8 +25,22 @@ export class Quiz {
   minAge?: number
 }
 
-export class StudentsQuestionaire{
+export class StudentsQuestionnaire{
   studentId: string = ""
   questId: string = ""
   answer: string = ""
+}
+
+export class UpQuiz {
+  studentId: string = ""
+  answer: string = ""
+  questId: string = ""
+  question: QuestsUpQuiz = new QuestsUpQuiz()
+}
+
+
+export class QuestsUpQuiz {
+  id: string = ""
+  type: string = ""
+  question: string = ""
 }

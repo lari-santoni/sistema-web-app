@@ -16,7 +16,8 @@ import { UpdateComponent } from './pages/authentication/components/update/update
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from '../api-interceptor.service';
-import { ProfessorUpdateComponent } from './pages/account/components/update-pass/professor-update/professor-update.component';
+import { ProfessorUpdateComponent } from './pages/account/components/updates/professor-update/professor-update.component';
+import { ChecklistUpdateComponent } from './pages/account/components/updates/checklist-update/checklist-update.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ProfessorUpdateComponent } from './pages/account/components/update-pass
     ReportComponent,
     UpdateComponent,
     ProfessorUpdateComponent,
+    ChecklistUpdateComponent,
   ],
   imports: [
     BrowserModule,
