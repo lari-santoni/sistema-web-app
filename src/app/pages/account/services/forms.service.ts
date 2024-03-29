@@ -59,23 +59,5 @@ export class FormsService {
         .set('Authorization', `Bearer ${token}`)
 
     return this.http.get<ReportResult>(`${this.urlBase}/report?id=${id_student}`, { headers: head })
-    // var report = {
-    //   studentName: 'Raiden Mei',
-    //   professorName: 'Murata Himeko',
-    //   school: 'St. Freya Academy',
-    //   timeClass: '5',
-    //   detected: [
-    //     {
-    //       caracteristics: 'TDAH',
-    //       level: 'alto'
-    //     },
-    //     {
-    //       caracteristics: 'DI',
-    //       level: 'medio'
-    //     }
-    //   ]
-    // }
-
-    // return report
   }
 }
