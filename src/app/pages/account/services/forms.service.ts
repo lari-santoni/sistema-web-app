@@ -4,6 +4,7 @@ import { environment } from '../../../../environments/environment.development';
 import { ReportInfo, StudentsQuestionnaire } from '../models/quiz-response';
 import { Observable } from 'rxjs';
 import { Quiz } from '../models/quiz-response';
+import { ReportResult } from '../models/report';
 
 @Injectable({
   providedIn: 'root'
@@ -49,24 +50,32 @@ export class FormsService {
     return this.http.post<Quiz[]>(`${this.urlBase}/checklist`, answersList, { headers: head })
   }
 
-  getReportAnswers() {
-    var report = {
-      studentName: 'Raiden Mei',
-      professorName: 'Murata Himeko',
-      school: 'St. Freya Academy',
-      timeClass: '5',
-      detected: [
-        {
-          caracteristics: 'TDAH',
-          level: 'alto'
-        },
-        {
-          caracteristics: 'DI',
-          level: 'medio'
-        }
-      ]
-    }
+  getReportAnswers(id_student: string) {
+    const token = localStorage.getItem('token') || {}
 
-    return report
+    let head = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Authorization', `Bearer ${token}`)
+
+    return this.http.get<ReportResult>(`${this.urlBase}/report?id=${id_student}`, { headers: head })
+    // var report = {
+    //   studentName: 'Raiden Mei',
+    //   professorName: 'Murata Himeko',
+    //   school: 'St. Freya Academy',
+    //   timeClass: '5',
+    //   detected: [
+    //     {
+    //       caracteristics: 'TDAH',
+    //       level: 'alto'
+    //     },
+    //     {
+    //       caracteristics: 'DI',
+    //       level: 'medio'
+    //     }
+    //   ]
+    // }
+
+    // return report
   }
 }

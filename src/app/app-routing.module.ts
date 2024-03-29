@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'list-professors', component: ListProfessorsComponent },
   { path: 'checklist/:id_student', component: ChecklistComponent },
   { path: 'checklist-update/:id_student', component: ChecklistUpdateComponent },
-  { path: 'report', component: ReportComponent}
+  { path: 'report/:id_student', component: ReportComponent}
 ];
 
 @NgModule({

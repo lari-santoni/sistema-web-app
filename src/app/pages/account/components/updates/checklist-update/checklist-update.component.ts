@@ -70,14 +70,15 @@ export class ChecklistUpdateComponent implements OnInit {
       let upList: StudentsQuestionnaire = {
         studentId: this.id_student,
         answer: value,
-        questId: this.questionnare[index].question.id
+        questId: this.questionnare[index].question.id,
+        questType: this.questionnare[index].questType
       }
       this.upListQuest.push(upList)
     })
 
     this.updateServices.upQuestionnaire(this.upListQuest).subscribe({
       next: () => {
-        this.router.navigate(['/report'])
+        this.router.navigate(['/report', this.id_student])
       }
     })
   }

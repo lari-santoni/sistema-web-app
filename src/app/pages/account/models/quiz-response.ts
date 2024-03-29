@@ -4,14 +4,6 @@ export class ReportInfo {
   professorName: string = "";
 }
 
-export class ReportAnswers {
-  studentName: string = "";
-  professorName: string = "";
-  school: string = "";
-  timeClass: string = "";
-  detected: IdentifiedCharacteristics[] = []
-}
-
 export class IdentifiedCharacteristics {
   caracteristics: string = "";
   level: string = "";
@@ -28,6 +20,7 @@ export class Quiz {
 export class StudentsQuestionnaire{
   studentId: string = ""
   questId: string = ""
+  questType: string = ""
   answer: string = ""
 }
 
@@ -35,6 +28,7 @@ export class UpQuiz {
   studentId: string = ""
   answer: string = ""
   questId: string = ""
+  questType: string = ""
   question: QuestsUpQuiz = new QuestsUpQuiz()
 }
 

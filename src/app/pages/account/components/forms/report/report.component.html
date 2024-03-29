@@ -1,6 +1,6 @@
 <div id="report-container" class="cad-container">
   <div id="report-" class="report-file">
-    <form>
+    <form class="printable">
       <div class="cad-page">
         <header class="report-header">
           <h2>RELATÓRIO DAS SUSPEITAS IDENTIFICADAS</h2>
@@ -8,8 +8,8 @@
         <div class="report-text">
           <p><b>Descrição da demanda</b></p>
           <p>
-            {{ report.studentName }} é aluno das professoras
-            {{ report.professorName }} na escola {{ report.school }}. É uma
+            {{ report.name }} é aluno das professoras
+            {{ report.professor.name }} na escola {{ report.school }}. É uma
             criança que gosta de brincar e participa das atividades da classe. É
             envolvido/a nas brincadeiras principalmente relacionadas com
             (música, atividade física, movimentos, pinturas, desenhos, corrida,
@@ -17,20 +17,19 @@
             relacionamento com os colegas e professores.
           </p>
           <p>
-            Há {{ report.timeClass }} durante as (aulas/ atividades/
-            brincadeiras na escola) tem se verificado nela algumas
-            caraterísticas nas áreas do seu desenvolvimento que chamam atenção.
-            Ela tem se mostrado como uma criança que (mencionar no máximo 5
-            características – principalmente as que tiverem pontuação de muito
-            frequentemente). O sistema de identificação de características
-            suspeitas de transtornos do neurodesenvolvimento em crianças
-            pequenas que está implementado na escola, indicou que há
-            probabilidade da criança apresentar (alto, médio, baixo) risco para
-            (apresentar o 1 transtorno com as maiores características
-            mencionadas); (alto, médio, baixo) para (apresentar o 2 transtorno
-            com as maiores características); (alto, médio, baixo) para
-            (apresentar o 3 transtorno com as maiores características); (alto,
-            médio, baixo) para (apresentar o 4 transtorno com as maiores
+            Durante as (aulas/ atividades/ brincadeiras na escola) tem se
+            verificado nela algumas caraterísticas nas áreas do seu
+            desenvolvimento que chamam atenção. Ela tem se mostrado como uma
+            criança que (mencionar no máximo 5 características – principalmente
+            as que tiverem pontuação de muito frequentemente). O sistema de
+            identificação de características suspeitas de transtornos do
+            neurodesenvolvimento em crianças pequenas que está implementado na
+            escola, indicou que há probabilidade da criança apresentar (alto,
+            médio, baixo) risco para (apresentar o 1 transtorno com as maiores
+            características mencionadas); (alto, médio, baixo) para (apresentar
+            o 2 transtorno com as maiores características); (alto, médio, baixo)
+            para (apresentar o 3 transtorno com as maiores características);
+            (alto, médio, baixo) para (apresentar o 4 transtorno com as maiores
             características)
           </p>
           <br />
@@ -50,7 +49,9 @@
         </div>
       </div>
       <div class="div-duoButton">
-        <button class="button-white">Imprimir</button>
+        <button class="button-white" type="submit" (click)="printPage()">
+          Imprimir
+        </button>
         <button class="button-green">Voltar</button>
       </div>
     </form>

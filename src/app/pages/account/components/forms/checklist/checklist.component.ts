@@ -58,14 +58,15 @@ export class ChecklistComponent implements OnInit {
       let newAnswer: StudentsQuestionnaire = {
         studentId: this.id_student,
         answer: value,
-        questId: this.questions[index].id
+        questId: this.questions[index].id,
+        questType: this.questions[index].type
       }
       this.listQuest.push(newAnswer)
     })
 
     this.formsService.addQuizAnswers(this.listQuest).subscribe({
       next: () => {
-        this.router.navigate(['/report'])
+        this.router.navigate(['/report', this.id_student])
       }
     })
   }

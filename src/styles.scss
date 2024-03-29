@@ -418,3 +418,27 @@ button[disabled]{
 .list-center {
     text-align: center;
 }
+
+@media print {
+    @page{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    // body {
+    //     padding-top: 5rem;
+    //     padding-bottom: 5rem;
+    // }
+
+    .printable {
+        visibility: visible;
+        background-color: white;
+        text-align: center;
+        top: 0;
+        left: 0;
+    }
+
+    button {
+        display: none;
+    }
+}
