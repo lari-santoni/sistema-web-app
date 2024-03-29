@@ -44,7 +44,7 @@ export class ProfessorUpdateComponent implements OnInit {
 
   upProfessor() {
     this.updateService.updateProfessor(this.upProfData).subscribe({
-      next: (response) => {
+      next: () => {
         alert("Dados alterados com sucesso")
         window.location.reload()
       },

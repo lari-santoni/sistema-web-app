@@ -3,6 +3,7 @@ import { environment } from '../../../../environments/environment.development';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UpdateProfData } from '../models/update-professor';
+import { StudentsQuestionnaire } from '../models/quiz-response';
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,16 @@ export class UpdatesService {
         .set('Authorization', `Bearer ${token}`)
 
     return this.http.get<any>(`${this.urlBase}/get-checklist?id=${id_student}`, {headers:head})
+  }
+
+  public upQuestionnaire(lData: StudentsQuestionnaire[]): Observable<any>{
+    const token = localStorage.getItem('token') || {}
+
+    let head = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Authorization', `Bearer ${token}`)
+
+    return this.http.put<any>(`${this.urlBase}/update-checklist`, lData, { headers: head })
   }
 }

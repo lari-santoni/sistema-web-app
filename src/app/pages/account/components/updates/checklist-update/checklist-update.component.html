@@ -22,7 +22,7 @@
               <p>Idade: {{ basicInfo.studentAge }}</p>
             </div>
           </div>
-          <form (ngSubmit)="updateQuestionnaire()" #formQuestReg="ngForm">
+          <form (ngSubmit)="updateQuestionnaire()" #upFormQuestReg="ngForm">
             <table class="check-table">
               <thead class="check-th">
                 <tr>
@@ -108,7 +108,7 @@
             <div class="div-duoButton">
               <button
                 type="submit"
-                [disabled]="!formQuestReg.valid"
+                [disabled]="!upFormQuestReg.valid"
                 class="button-green"
               >
                 Enviar

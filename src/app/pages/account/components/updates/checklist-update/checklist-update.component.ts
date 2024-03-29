@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { QuestsUpQuiz, ReportInfo, UpQuiz } from '../../../models/quiz-response';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { QuestsUpQuiz, ReportInfo, StudentsQuestionnaire, UpQuiz } from '../../../models/quiz-response';
 import { FormsService } from '../../../services/forms.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UpdatesService } from '../../../services/updates.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-checklist-update',
@@ -15,6 +16,8 @@ export class ChecklistUpdateComponent implements OnInit {
   questions: QuestsUpQuiz[] = []
   questionnare: UpQuiz[] = []
   answersList: string[] = []
+  upStudentQuest: StudentsQuestionnaire = new StudentsQuestionnaire()
+  upListQuest: StudentsQuestionnaire[] = []
 
   constructor(private formService: FormsService, private updateServices: UpdatesService, private route: ActivatedRoute, private router: Router) {}
 
@@ -53,9 +56,6 @@ export class ChecklistUpdateComponent implements OnInit {
           this.questions.push(element.question)
           this.answersList.push(element.answer)
         })
-
-        console.log('r',this.questionnare)
-        console.log('r',this.questions)
       },
       error: (response) => {
         console.log(response)
@@ -63,6 +63,23 @@ export class ChecklistUpdateComponent implements OnInit {
     })
   }
 
-  updateQuestionnaire() {}
+  @ViewChild('upFormQuestReg') upFormQuestReg!: NgForm
+
+  updateQuestionnaire() {
+    this.answersList.forEach((value, index) => {
+      let upList: StudentsQuestionnaire = {
+        studentId: this.id_student,
+        answer: value,
+        questId: this.questionnare[index].question.id
+      }
+      this.upListQuest.push(upList)
+    })
+
+    this.updateServices.upQuestionnaire(this.upListQuest).subscribe({
+      next: () => {
+        this.router.navigate(['/report'])
+      }
+    })
+  }
 
 }
