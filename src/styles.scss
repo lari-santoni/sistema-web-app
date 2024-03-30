@@ -8,8 +8,22 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-height: 100vh;
+    padding: 30px;
+}
+
+.cad-container-student {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 30px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
 }
 
 .cad-file {
@@ -234,6 +248,16 @@ a:link, a:visited {
     margin: 0;
 }
 
+.etnicit-input {
+    width: 98%;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: white;
+    height: 35px;
+    padding: 0;
+    margin: 0;
+}
+
 .select-input {
     width: 100%;
     height: 100%;
@@ -421,8 +445,13 @@ button[disabled]{
 
 @media print {
     @page{
-        margin-top: 0;
-        margin-bottom: 0;
+    //     margin-top: 0;
+    //     margin-bottom: 0;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
     }
 
     // body {
@@ -431,11 +460,21 @@ button[disabled]{
     // }
 
     .printable {
-        visibility: visible;
-        background-color: white;
-        text-align: center;
+        // visibility: visible;
+    //     background-color: white;
+    //     // text-align: center;
         top: 0;
         left: 0;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+    //     display: flex;
+    //     flex-direction: row;
+    //     align-items: flex-start;
+    }
+
+    #no-printable {
+        display: none;
     }
 
     button {

@@ -1,38 +1,50 @@
-<div id="listStu-container" class="cad-container">
-  <div id="listStu-file" class="cad-file">
-    <form>
-      <div id="listStu-page" class="cad-page">
-        <header class="list-header">
-          <h1>Alunos do Professor: {{ listStudents.name }}</h1>
-        </header>
-        <table class="list-table">
-          <thead class="list-th">
-            <tr>
-              <th>Aluno</th>
-              <th>Ficha</th>
-              <th>Relatório</th>
-            </tr>
-          </thead>
-          <tbody class="list-td">
-            @for (student of listStudents.Students; track student.id) {
-            <tr>
-              <td>
-                <a>{{ student.name }}</a>
-              </td>
-              <td class="list-center">
-                <a href="/checklist-update/{{ student.id }}">Editar</a>
-              </td>
-              <td class="list-center">
-                <a href="/report/{{ student.id }}">Visualizar</a>
-              </td>
-            </tr>
-            }
-          </tbody>
-        </table>
-        <div class="div-shortButton">
-          <button class="short-button" (click)="backPage()">Voltar</button>
+<div id="title-adm">
+  <div class="header-container">
+    <h1>Sistema para identificação precoce de características</h1>
+  </div>
+  <div id="listStu-container" class="cad-container">
+    <div id="listStu-file" class="cad-file">
+      <form>
+        <div id="listStu-page" class="cad-page">
+          <header class="list-header">
+            <h1>Alunos do Professor: {{ listStudents.name }}</h1>
+          </header>
+          <table class="list-table">
+            <thead class="list-th">
+              <tr>
+                <th>Aluno</th>
+                <th>Ficha</th>
+                <th>Relatório</th>
+              </tr>
+            </thead>
+            <tbody class="list-td">
+              @for (student of listStudents.Students; track student.id) {
+              <tr>
+                <td>
+                  <a>{{ student.name }}</a>
+                </td>
+                <td class="list-center">
+                  @if(student.timeClass>0.3){<a
+                    href="/checklist-update/{{ student.id }}"
+                    >Editar</a
+                  >}@else{ - }
+                </td>
+                <td class="list-center">
+                  @if(student.timeClass>0.3) {
+                  <a href="/report/{{ student.id }}">Visualizar</a>
+                  }@else{
+                  <a href="/noreport/{{ student.id }}">Visualizar</a>
+                  }
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+          <div class="div-shortButton">
+            <button class="short-button" (click)="backPage()">Voltar</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

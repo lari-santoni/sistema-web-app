@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsService } from '../../../services/forms.service';
-import { ReportResult, Results } from '../../../models/report';
-import { findCharacteristics } from '../../../../../functions/report-functions';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormsService } from '../../../services/forms.service';
+import { ReportResult } from '../../../models/report';
+import { findCharacteristics } from '../../../../../functions/report-functions';
 
 @Component({
-  selector: 'app-report',
-  templateUrl: './report.component.html',
-  styleUrl: './report.component.scss'
+  selector: 'app-no-report',
+  templateUrl: './no-report.component.html',
+  styleUrl: './no-report.component.scss'
 })
-export class ReportComponent implements OnInit{
+export class NoReportComponent implements OnInit{
   report: ReportResult = new ReportResult()
   id_student: string = ''
 
-  constructor(private formsService: FormsService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private noFormsService: FormsService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.id_student = params['id_student'])
@@ -25,7 +25,7 @@ export class ReportComponent implements OnInit{
   }
 
   getReportAnswers() {
-    this.formsService.getReportAnswers(this.id_student).subscribe({
+    this.noFormsService.getReportAnswers(this.id_student).subscribe({
       next: (response) => {
         const characteristics = findCharacteristics(response.results)
         this.report = {
@@ -34,9 +34,6 @@ export class ReportComponent implements OnInit{
           professor: response.professor,
           results: characteristics
         }
-
-        console.log('res ',response)
-
       },
       error: (response) => {
         console.log(response)

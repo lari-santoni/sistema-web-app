@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from '../api-interceptor.service';
 import { ProfessorUpdateComponent } from './pages/account/components/updates/professor-update/professor-update.component';
 import { ChecklistUpdateComponent } from './pages/account/components/updates/checklist-update/checklist-update.component';
+import { NoReportComponent } from './pages/account/components/forms/no-report/no-report.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ChecklistUpdateComponent } from './pages/account/components/updates/che
     UpdateComponent,
     ProfessorUpdateComponent,
     ChecklistUpdateComponent,
+    NoReportComponent,
   ],
   imports: [
     BrowserModule,

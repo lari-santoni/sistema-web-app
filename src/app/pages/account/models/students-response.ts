@@ -6,4 +6,5 @@ export class StudentListResponse {
 export class StudentList {
     id: string = '';
     name: string = '';
+    timeClass: number = 0;
 }

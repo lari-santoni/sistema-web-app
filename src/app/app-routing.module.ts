@@ -12,6 +12,7 @@ import { ReportComponent } from './pages/account/components/forms/report/report.
 import { UpdateComponent } from './pages/authentication/components/update/update.component';
 import { ProfessorUpdateComponent } from './pages/account/components/updates/professor-update/professor-update.component';
 import { ChecklistUpdateComponent } from './pages/account/components/updates/checklist-update/checklist-update.component';
+import { NoReportComponent } from './pages/account/components/forms/no-report/no-report.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'list-professors', component: ListProfessorsComponent },
   { path: 'checklist/:id_student', component: ChecklistComponent },
   { path: 'checklist-update/:id_student', component: ChecklistUpdateComponent },
-  { path: 'report/:id_student', component: ReportComponent}
+  { path: 'report/:id_student', component: ReportComponent},
+  { path: 'noreport/:id_student', component: NoReportComponent}
 ];
 
 @NgModule({

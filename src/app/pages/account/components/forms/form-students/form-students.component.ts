@@ -29,7 +29,13 @@ export class FormStudentsComponent {
     this.formService.registerStudents(this.regStudent).subscribe({
       next: (response) => {
         this.id_student = response.id
-        this.router.navigate(['/checklist', this.id_student])
+
+        if (response.timeClass > 0.3){
+          this.router.navigate(['/checklist', this.id_student])
+        }
+        else {
+          this.router.navigate(['/noreport', this.id_student])
+        }
       },
       error: (response) => {
         console.log(response)

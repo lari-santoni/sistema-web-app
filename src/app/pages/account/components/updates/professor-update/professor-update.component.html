@@ -1,102 +1,109 @@
-<div id="update-container" class="cad-container">
-  <div id="update-file" class="cad-file">
-    <div id="update-page" class="cad-page">
-      <header id="update-header">
-        <h1>Dados do professor</h1>
-      </header>
-      <form
-        id="update-form"
-        (ngSubmit)="upProfessor()"
-        #formUpdateProf="ngForm"
-      >
-        <p>Nome</p>
-        <div class="div-input">
-          <input
-            id="update-fname"
-            class="form-input"
-            type="text"
-            required
-            ngModel
-            name="upName"
-            #upName="ngModel"
-            placeholder="Nome completo do professor"
-            [(ngModel)]="upProfData.name"
-          />
-        </div>
-        <div>
-          <div *ngIf="upName.touched && upName.invalid" class="validation">
-            <div *ngIf="upName.hasError('required')">Nome é obrigatório</div>
+<div id="title-adm">
+  <div class="header-container">
+    <h1>Sistema para identificação precoce de características</h1>
+  </div>
+  <div id="update-container" class="cad-container">
+    <div id="update-file" class="cad-file">
+      <div id="update-page" class="cad-page">
+        <header id="update-header">
+          <h1>Dados do professor</h1>
+        </header>
+        <form
+          id="update-form"
+          (ngSubmit)="upProfessor()"
+          #formUpdateProf="ngForm"
+        >
+          <p>Nome</p>
+          <div class="div-input">
+            <input
+              id="update-fname"
+              class="form-input"
+              type="text"
+              required
+              ngModel
+              name="upName"
+              #upName="ngModel"
+              placeholder="Nome completo do professor"
+              [(ngModel)]="upProfData.name"
+            />
           </div>
-        </div>
-        <p>E-mail</p>
-        <div class="div-input">
-          <input
-            id="update-email"
-            class="form-input"
-            type="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-            required
-            ngModel
-            name="upEmail"
-            #upEmail="ngModel"
-            placeholder="email.professor@exemplo.com"
-            [(ngModel)]="upProfData.email"
-          />
-        </div>
-        <div>
-          <div *ngIf="upEmail.touched && upEmail.invalid" class="validation">
-            <div *ngIf="upEmail.hasError('required')">E-mail é obrigatório</div>
-            <div *ngIf="upEmail.hasError('pattern')">
-              Formato de e-mail inválido
+          <div>
+            <div *ngIf="upName.touched && upName.invalid" class="validation">
+              <div *ngIf="upName.hasError('required')">Nome é obrigatório</div>
             </div>
           </div>
-        </div>
-        <p>Senha</p>
-        <div class="div-input">
-          <input
-            id="update-password"
-            class="form-input"
-            type="password"
-            required
-            ngModel
-            name="upPassword"
-            #upPassword="ngModel"
-            placeholder="Nova senha"
-            [(ngModel)]="upProfData.password"
-          />
-        </div>
-        <p>Confirmar senha</p>
-        <div class="div-input">
-          <input
-            id="update-cpassword"
-            class="form-input"
-            type="password"
-            required
-            ngModel
-            name="confirmPass"
-            #confirmPass="ngModel"
-            placeholder="Confirmar nova senha"
-            [(ngModel)]="upProfData.confirmPassword"
-          />
-        </div>
-        <div>
-          @if(!compare) {
-          <label class="validation" for="">{{ errorMessage }}</label>
-          }
-        </div>
-      </form>
-    </div>
-    <div class="div-duoButton">
-      <button
-        [disabled]="!formUpdateProf.valid"
-        class="button-green"
-        (click)="sendForm()"
-      >
-        Salvar
-      </button>
-      <button type="button" (click)="backHomeProf()" class="button-white">
-        Voltar
-      </button>
+          <p>E-mail</p>
+          <div class="div-input">
+            <input
+              id="update-email"
+              class="form-input"
+              type="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              required
+              ngModel
+              name="upEmail"
+              #upEmail="ngModel"
+              placeholder="email.professor@exemplo.com"
+              [(ngModel)]="upProfData.email"
+            />
+          </div>
+          <div>
+            <div *ngIf="upEmail.touched && upEmail.invalid" class="validation">
+              <div *ngIf="upEmail.hasError('required')">
+                E-mail é obrigatório
+              </div>
+              <div *ngIf="upEmail.hasError('pattern')">
+                Formato de e-mail inválido
+              </div>
+            </div>
+          </div>
+          <p>Senha</p>
+          <div class="div-input">
+            <input
+              id="update-password"
+              class="form-input"
+              type="password"
+              required
+              ngModel
+              name="upPassword"
+              #upPassword="ngModel"
+              placeholder="Nova senha"
+              [(ngModel)]="upProfData.password"
+            />
+          </div>
+          <p>Confirmar senha</p>
+          <div class="div-input">
+            <input
+              id="update-cpassword"
+              class="form-input"
+              type="password"
+              required
+              ngModel
+              name="confirmPass"
+              #confirmPass="ngModel"
+              placeholder="Confirmar nova senha"
+              [(ngModel)]="upProfData.confirmPassword"
+            />
+          </div>
+          <div>
+            @if(!compare) {
+            <label class="validation" for="">{{ errorMessage }}</label>
+            }
+          </div>
+        </form>
+      </div>
+      <div class="div-duoButton">
+        <button
+          [disabled]="!formUpdateProf.valid"
+          class="button-green"
+          (click)="sendForm()"
+        >
+          Salvar
+        </button>
+        <button type="button" (click)="backHomeProf()" class="button-white">
+          Voltar
+        </button>
+      </div>
     </div>
   </div>
 </div>

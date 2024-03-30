@@ -1,0 +1,42 @@
+<div id="title-adm">
+  <div id="no-printable" class="header-container">
+    <h1 class="no-printable">
+      Sistema para identificação precoce de características
+    </h1>
+  </div>
+  <div id="report-container" class="cad-container-student">
+    <div id="report-" class="report-file">
+      <form class="printable">
+        <div class="cad-page">
+          <header class="report-header">
+            <h2>RELATÓRIO DAS SUSPEITAS IDENTIFICADAS</h2>
+          </header>
+          <div class="report-text">
+            <p><b>Descrição da demanda</b></p>
+            <p>
+              {{ report.name }} é aluno do professoror
+              {{ report.professor.name }} na escola {{ report.school }}.
+            </p>
+            <p>
+              Não houve tempo de convivência entre aluno e professor suficientes
+              para se gerar um relatório.
+            </p>
+            <div class="report-sign">
+              (Local, data e horário da avaliação)
+              <hr class="report-hr" />
+              <p>Professor responsável pelo relatório</p>
+            </div>
+          </div>
+        </div>
+        <div class="div-duoButton">
+          <button class="button-white" type="submit" (click)="printPage()">
+            Imprimir
+          </button>
+          <button class="button-green" type="button" (click)="backHomeProf()">
+            Voltar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

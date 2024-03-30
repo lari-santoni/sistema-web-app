@@ -1,8 +1,9 @@
 export class RegisterStudent {
   name: string = ''
-  age: string = ''
+  age?: number
   gender: string = ''
   ethnicity: string = ''
+  timeClass?: number
   school: string = ''
   classrom: string = ''
   professorId: string = ''
