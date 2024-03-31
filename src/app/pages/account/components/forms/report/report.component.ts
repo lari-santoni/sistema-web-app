@@ -27,7 +27,7 @@ export class ReportComponent implements OnInit{
   getReportAnswers() {
     this.formsService.getReportAnswers(this.id_student).subscribe({
       next: (response) => {
-        const characteristics = findCharacteristics(response.results)
+        const characteristics = findCharacteristics(response.results[0])
         this.report = {
           name: response.name,
           school: response.school,
@@ -35,8 +35,7 @@ export class ReportComponent implements OnInit{
           results: characteristics
         }
 
-        console.log('res ',response)
-
+        console.log(this.report)
       },
       error: (response) => {
         console.log(response)

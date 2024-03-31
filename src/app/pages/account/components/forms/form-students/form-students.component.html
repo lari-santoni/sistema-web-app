@@ -35,7 +35,7 @@
           </div>
           <div class="same-row">
             <div class="same-column">
-              <p>Idade</p>
+              <p>Idade*</p>
               <div class="div-input">
                 <input
                   id="student-age"
@@ -57,9 +57,6 @@
                 >
                   <div *ngIf="studentAge.hasError('required')">
                     Idade é obrigatória
-                  </div>
-                  <div *ngIf="studentAge.hasError('required')">
-                    Ex meses: 1 mês = 0.1 etc.
                   </div>
                 </div>
               </div>
@@ -131,7 +128,7 @@
               </div>
             </div>
             <div class="same-column">
-              <p>Tempo com aluno</p>
+              <p>Tempo com aluno*</p>
               <div class="div-input">
                 <input
                   id="student-age"
@@ -152,9 +149,6 @@
                 >
                   <div *ngIf="studentTime.hasError('required')">
                     Tempo de aula é obrigatório
-                  </div>
-                  <div *ngIf="studentTime.hasError('required')">
-                    Ex meses: 1 mês = 0.1 etc.
                   </div>
                 </div>
               </div>
@@ -298,6 +292,9 @@
               </div>
             </div>
           </div>
+          <small
+            ><p>*Ex: 1 mês = 0.1 até 11 meses = 0.11 e 1 ano = 1 etc.</p></small
+          >
           <div class="div-duoButton">
             <button
               type="submit"
