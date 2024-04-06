@@ -27,7 +27,9 @@ export class ReportComponent implements OnInit{
   getReportAnswers() {
     this.formsService.getReportAnswers(this.id_student).subscribe({
       next: (response) => {
+        console.log('r',response.results[0])
         const characteristics = findCharacteristics(response.results[0])
+        console.log('c',characteristics)
         this.report = {
           name: response.name,
           school: response.school,

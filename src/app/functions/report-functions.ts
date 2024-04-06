@@ -5,7 +5,7 @@ const characteristicsArr: Result = new Result()
 export function findCharacteristics(type: Results) {
   getDI(type.diResult)
   getTEA(type.teaResult)
-  getTEAP(type.teaResult)
+  getTEAP(type.teapResult)
   getTDAH(type.tdahResult)
 
   return characteristicsArr
