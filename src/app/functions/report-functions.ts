@@ -13,7 +13,7 @@ export function findCharacteristics(type: Results) {
 
 function getDI(type: number){
   const tipeDI = 'DI'
-  if (type>0.01 && type<=0.75) {
+  if (type>=0 && type<=0.75) {
     characteristicsArr.di = {
       name: tipeDI,
       level: 'Nenhum Risco'
@@ -41,7 +41,7 @@ function getDI(type: number){
 
 function getTEA(type: number){
   const tipeTEA = 'TEA'
-  if (type>0.01 && type<=0.75) {
+  if (type>=0 && type<=0.75) {
     characteristicsArr.tea = {
       name: tipeTEA,
       level: 'Nenhum Risco'
@@ -69,7 +69,7 @@ function getTEA(type: number){
 
 function getTEAP(type: number){
   const tipeTEAp = 'TEAp'
-  if (type>0.01 && type<=0.75) {
+  if (type>=0 && type<=0.75) {
     characteristicsArr.teap = {
       name: tipeTEAp,
       level: 'Nenhum Risco'
@@ -97,7 +97,7 @@ function getTEAP(type: number){
 
 function getTDAH(type: number){
   const tipeTDAH = 'TDAH'
-  if (type>0.01 && type<=0.75) {
+  if (type>=0 && type<=0.75) {
     characteristicsArr.tdah = {
       name: tipeTDAH,
       level: 'Nenhum Risco'
