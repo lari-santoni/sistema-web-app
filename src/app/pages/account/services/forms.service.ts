@@ -4,7 +4,7 @@ import { environment } from '../../../../environments/environment.development';
 import { ReportInfo, StudentsQuestionnaire } from '../models/quiz-response';
 import { Observable } from 'rxjs';
 import { Quiz } from '../models/quiz-response';
-import { ReportResult } from '../models/report';
+import { Characteristics, ReportResult } from '../models/report';
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +59,16 @@ export class FormsService {
         .set('Authorization', `Bearer ${token}`)
 
     return this.http.get<ReportResult>(`${this.urlBase}/report?id=${id_student}`, { headers: head })
+  }
+
+  getReportChar(id_student: string) {
+    const token = localStorage.getItem('token') || {}
+
+    let head = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*')
+    .set('Authorization', `Bearer ${token}`)
+
+    return this.http.get<Characteristics>(`${this.urlBase}/get-characteristics?id=${id_student}`, { headers: head })
   }
 }

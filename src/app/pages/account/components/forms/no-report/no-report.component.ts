@@ -30,6 +30,7 @@ export class NoReportComponent implements OnInit{
         const characteristics = findCharacteristics(response.results)
         this.report = {
           name: response.name,
+          age: response.age,
           school: response.school,
           professor: response.professor,
           results: characteristics

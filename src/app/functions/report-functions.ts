@@ -1,124 +1,76 @@
 import { Result, Results } from "../pages/account/models/report";
 
-const characteristicsArr: Result = new Result()
+let characteristicsArr: string[]= []
+const typeDI = 'Deficiência Intelectual (DI)'
+const typeTEA = 'Transtorno do Espectro Autista (TEA)'
+const typeTEAp = 'Transtorno Específico de Aprendizagem (TEAp)'
+const typeTDAH = 'Transtorno de Déficit de Atenção/Hiperatividade (TDAH)'
 
-export function findCharacteristics(type: Results) {
-  getDI(type.diResult)
-  getTEA(type.teaResult)
-  getTEAP(type.teapResult)
-  getTDAH(type.tdahResult)
+export function findCharacteristics(type: Results){
+  getDI(type.diResult,typeDI)
+  getTEA(type.teaResult,typeTEA)
+  getTEAP(type.teapResult,typeTEAp)
+  getTDAH(type.tdahResult,typeTDAH)
 
   return characteristicsArr
 }
 
-function getDI(type: number){
-  const tipeDI = 'DI'
+function getDI(type:number, tDI:string){
   if (type>=0 && type<=0.75) {
-    characteristicsArr.di = {
-      name: tipeDI,
-      level: 'Nenhum Risco'
-    }
+    // pass
   }
   else if (type>0.75 && type<=1.50){
-    characteristicsArr.di = {
-      name: tipeDI,
-      level: 'Baixo Risco'
-    }
+    characteristicsArr.push('Baixo Risco para '+ tDI)
   }
   else if (type>1.50 && type<=2.25){
-    characteristicsArr.di = {
-      name: tipeDI,
-      level: 'Médio Risco'
-    }
+    characteristicsArr.push('Médio Risco para '+ tDI)
   }
   else if (type>2.25 && type<=3){
-    characteristicsArr.di = {
-      name: tipeDI,
-      level: 'Alto Risco'
-    }
+    characteristicsArr.push('Alto Risco para '+ tDI)
   }
 }
 
-function getTEA(type: number){
-  const tipeTEA = 'TEA'
+function getTEA(type:number, tTEA:string){
   if (type>=0 && type<=0.75) {
-    characteristicsArr.tea = {
-      name: tipeTEA,
-      level: 'Nenhum Risco'
-    }
+    // pass
   }
   else if (type>0.75 && type<=1.50){
-    characteristicsArr.tea = {
-      name: tipeTEA,
-      level: 'Baixo Risco'
-    }
+    characteristicsArr.push('Baixo Risco para '+ tTEA)
   }
   else if (type>1.50 && type<=2.25){
-    characteristicsArr.tea = {
-      name: tipeTEA,
-      level: 'Médio Risco'
-    }
+    characteristicsArr.push('Alto Risco para '+ tTEA)
   }
   else if (type>2.25 && type<=3){
-    characteristicsArr.tea = {
-      name: tipeTEA,
-      level: 'Alto Risco'
-    }
+    characteristicsArr.push('Alto Risco para '+ tTEA)
   }
 }
 
-function getTEAP(type: number){
-  const tipeTEAp = 'TEAp'
+function getTEAP(type:number, tTEAP:string){
   if (type>=0 && type<=0.75) {
-    characteristicsArr.teap = {
-      name: tipeTEAp,
-      level: 'Nenhum Risco'
-    }
+    // pass
   }
   else if (type>0.75 && type<=1.50){
-    characteristicsArr.teap = {
-      name: tipeTEAp,
-      level: 'Baixo Risco'
-    }
+    characteristicsArr.push('Baixo Risco para '+ tTEAP)
   }
   else if (type>1.50 && type<=2.25){
-    characteristicsArr.teap = {
-      name: tipeTEAp,
-      level: 'Médio Risco'
-    }
+    characteristicsArr.push('Médio Risco para '+ tTEAP)
   }
   else if (type>2.25 && type<=3){
-    characteristicsArr.teap = {
-      name: tipeTEAp,
-      level: 'Alto Risco'
-    }
+    characteristicsArr.push('Alto Risco para '+ tTEAP)
   }
 }
 
-function getTDAH(type: number){
-  const tipeTDAH = 'TDAH'
+function getTDAH(type:number, tTDAH:string){
   if (type>=0 && type<=0.75) {
-    characteristicsArr.tdah = {
-      name: tipeTDAH,
-      level: 'Nenhum Risco'
-    }
+    // pass
   }
   else if (type>0.75 && type<=1.50){
-    characteristicsArr.tdah = {
-      name: tipeTDAH,
-      level: 'Baixo Risco'
-    }
+    characteristicsArr.push('Baixo Risco para '+ tTDAH)
   }
   else if (type>1.50 && type<=2.25){
-    characteristicsArr.tdah = {
-      name: tipeTDAH,
-      level: 'Médio Risco'
-    }
+    characteristicsArr.push('Médio Risco para '+ tTDAH)
   }
   else if (type>2.25 && type<=3){
-    characteristicsArr.tdah = {
-      name: tipeTDAH,
-      level: 'Alto Risco'
-    }
+    characteristicsArr.push('Alto Risco para '+ tTDAH)
   }
 }

@@ -7,50 +7,73 @@
       <form class="printable">
         <div class="cad-page">
           <header class="report-header">
-            <h2>RELATÓRIO DAS SUSPEITAS IDENTIFICADAS</h2>
+            <h2>RELATÓRIO DE CARATERÍSTICAS DE DESENVOLVIMENTO INFANTIL</h2>
           </header>
           <div class="report-text">
             <p><b>Descrição da demanda</b></p>
             <p>
-              {{ report.name }} é aluno das professoras
-              {{ report.professor.name }} na escola {{ report.school }}. É uma
-              criança que gosta de brincar e participa das atividades da classe.
-              É envolvido/a nas brincadeiras principalmente relacionadas com
-              (música, atividade física, movimentos, pinturas, desenhos,
-              corrida, gestos). Tem autonomia na hora de alimentação e apresenta
-              bom relacionamento com os colegas e professores.
+              {{ report.name }} é aluno de {{ report.age }} anos de idade,
+              regularmente matriculado na escola {{ report.school }} no
+              (berçário, maternal, jardim) e é acompanhado pela professora
+              {{ report.professor.name }}. É uma criança que gosta de brincar e
+              participa das atividades da classe.
+            </p>
+            @if(hasValue){
+
+            <p>
+              Há (3 ou mais meses) durante as (aulas/ atividades/ brincadeiras
+              na escola), o aluno tem se mostrado como uma criança que:
             </p>
             <p>
-              Durante as (aulas/ atividades/ brincadeiras na escola) tem se
-              verificado nela algumas caraterísticas nas áreas do seu
-              desenvolvimento que chamam atenção. Ela tem se mostrado como uma
-              criança que (mencionar no máximo 5 características –
-              principalmente as que tiverem pontuação de muito frequentemente).
-              O sistema de identificação de características suspeitas de
-              transtornos do neurodesenvolvimento em crianças pequenas que está
-              implementado na escola, indicou que há probabilidade da criança
-              apresentar {{ report.results.di.level }} para
-              {{ report.results.di.name }}, {{ report.results.tea.level }} para
-              {{ report.results.tea.name }},
-              {{ report.results.teap.level }} para
-              {{ report.results.teap.name }} e
-              {{ report.results.tdah.level }} para
-              {{ report.results.tdah.name }}.
+              @for(quest of finalQuestion; track quest){ •
+              {{ quest.question.question }}<br />
+              }
+            </p>
+            <p>
+              O Sistema computadorizado para triagem de neurodesenvolvimento
+              (SISTRIN) de quatro transtornos, indicou que há probabilidade da
+              criança apresentar
+              {{ report.results }}. O sistema foi desenvolvido para auxiliar
+              professores na identificação de caraterísticas precoces, não sendo
+              usado para fins de diagnóstico e nem substitui a avaliação
+              diagnóstica de um profissional especializado.
             </p>
             <br />
             <p><b>Recomendações</b></p>
             <p>
               • Foi aconselhado aos cuidadores para o monitoramento das
-              características<br />
+              características.<br />
               • Que seja realizada uma avaliação diagnóstica por um profissional
-              especializado na criança.<br />
-              • A criança foi encaminhada para o serviço de Psicologia da escola
+              especializado.<br />
+              • A criança foi encaminhada para o serviço de Psicologia da
+              escola.
             </p>
             <div class="report-sign">
-              (Local, data e horário da avaliação)
+              <p>Obrigado</p>
+              <p>Local, data e horário da avaliação</p>
               <hr class="report-hr" />
-              <p>Professor responsável pelo relatório</p>
+              <p>A Professora responsável pelo relatório</p>
             </div>
+            }@else{
+            <p>
+              O sistema computadorizado para triagem de neurodesenvolvimento
+              (SISTRIN) de quatro transtornos (Deficiência Intelectual,
+              Transtorno de Déficit de Atenção/Hiperatividade, Transtorno do
+              Espectro Autista, Transtorno Específico de Aprendizagem), não
+              indicou risco para nenhum deles. O sistema foi desenvolvido para
+              auxiliar professores na identificação de caraterísticas precoces,
+              não sendo usado para fins de diagnóstico e nem substitui a
+              avaliação diagnóstica de um profissional especializado.
+            </p>
+            <br />
+            <p><b>Recomendações</b></p>
+            <p>
+              • A criança vai continuar sendo monitorada a acompanhada pelos
+              professores na escola<br />
+              • Os responsáveis da criança foram aconselhados a monitorar as
+              características identificadas<br />
+            </p>
+            }
           </div>
         </div>
         <div class="div-duoButton">

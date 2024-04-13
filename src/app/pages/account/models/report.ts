@@ -1,5 +1,6 @@
 export class ReportResult {
   name: string = ""
+  age: string = ""
   school: string = ""
   professor = new Professor
   results: any
@@ -24,6 +25,21 @@ export class Result {
 }
 
 export class ItemResult {
-  name: string = ''
-  level: string = ''
+  name?: string = ''
+}
+
+export class Characteristics {
+  student: StudentChar = new StudentChar()
+}
+
+class StudentChar {
+  questions: QuestionList[] = []
+}
+
+export class QuestionList {
+  question: QuestionFinal = new QuestionFinal()
+}
+
+export class QuestionFinal {
+  question: string = ''
 }

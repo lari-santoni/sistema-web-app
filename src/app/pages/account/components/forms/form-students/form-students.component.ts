@@ -30,8 +30,6 @@ export class FormStudentsComponent {
       next: (response) => {
         this.id_student = response.id
 
-        console.log(response)
-
         if (response.timeClass > 0.3){
           this.router.navigate(['/checklist', this.id_student])
         }
