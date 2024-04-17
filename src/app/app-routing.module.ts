@@ -18,18 +18,18 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'update', component: UpdateComponent, canActivate: [AuthGuard] },
-  { path: 'student', component: FormStudentsComponent},
-  { path: 'professor-home', component: StudentSelectComponent },
-  { path: 'update-prof', component: ProfessorUpdateComponent},
-  { path: 'adm-home', component: ProfessorSelectComponent },
-  { path: 'list-students', component: ListStudentsComponent },
-  { path: 'list-professors', component: ListProfessorsComponent },
-  { path: 'checklist/:id_student', component: ChecklistComponent },
-  { path: 'checklist-update/:id_student', component: ChecklistUpdateComponent },
-  { path: 'report/:id_student', component: ReportComponent},
-  { path: 'noreport/:id_student', component: NoReportComponent}
+  { path: 'student', component: FormStudentsComponent, canActivate: [AuthGuard] },
+  { path: 'professor-home', component: StudentSelectComponent, canActivate: [AuthGuard]  },
+  { path: 'update-prof', component: ProfessorUpdateComponent, canActivate: [AuthGuard] },
+  { path: 'adm-home', component: ProfessorSelectComponent, canActivate: [AuthGuard]  },
+  { path: 'list-students', component: ListStudentsComponent, canActivate: [AuthGuard]  },
+  { path: 'list-professors', component: ListProfessorsComponent, canActivate: [AuthGuard]  },
+  { path: 'checklist/:id_student', component: ChecklistComponent, canActivate: [AuthGuard]  },
+  { path: 'checklist-update/:id_student', component: ChecklistUpdateComponent, canActivate: [AuthGuard]  },
+  { path: 'report/:id_student', component: ReportComponent, canActivate: [AuthGuard] },
+  { path: 'noreport/:id_student', component: NoReportComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
