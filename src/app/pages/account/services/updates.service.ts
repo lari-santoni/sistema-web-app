@@ -11,49 +11,58 @@ import { StudentsQuestionnaire } from '../models/quiz-response';
 export class UpdatesService {
 
   private readonly urlBase = environment.urlBase
+  token:any = '';
 
   constructor(private http: HttpClient) { }
 
   public getProfessor(id_professor: string): Observable<any> {
-    const token = localStorage.getItem('token') || {}
+    if (typeof localStorage !== 'undefined'){
+      this.token = localStorage.getItem('token') || {}
+    }
 
     let head = new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set('Access-Control-Allow-Origin', '*')
-        .set('Authorization', `Bearer ${token}`)
+        .set('Authorization', `Bearer ${this.token}`)
 
     return this.http.get<any>(`${this.urlBase}/get-professor?id=${id_professor}`, { headers: head })
   }
 
   public updateProfessor(data: UpdateProfData): Observable<any> {
-    const token = localStorage.getItem('token') || {}
+    if (typeof localStorage !== 'undefined'){
+      this.token = localStorage.getItem('token') || {}
+    }
 
     let head = new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set('Access-Control-Allow-Origin', '*')
-        .set('Authorization', `Bearer ${token}`)
+        .set('Authorization', `Bearer ${this.token}`)
 
     return this.http.put<any>(`${this.urlBase}/update-data`, data, { headers: head })
   }
 
   public getQuestionnaireData(id_student: string) {
-    const token = localStorage.getItem('token') || {}
+    if (typeof localStorage !== 'undefined'){
+      this.token = localStorage.getItem('token') || {}
+    }
 
     let head = new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set('Access-Control-Allow-Origin', '*')
-        .set('Authorization', `Bearer ${token}`)
+        .set('Authorization', `Bearer ${this.token}`)
 
     return this.http.get<any>(`${this.urlBase}/get-checklist?id=${id_student}`, {headers:head})
   }
 
   public upQuestionnaire(lData: StudentsQuestionnaire[]): Observable<any>{
-    const token = localStorage.getItem('token') || {}
+    if (typeof localStorage !== 'undefined'){
+      this.token = localStorage.getItem('token') || {}
+    }
 
     let head = new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set('Access-Control-Allow-Origin', '*')
-        .set('Authorization', `Bearer ${token}`)
+        .set('Authorization', `Bearer ${this.token}`)
 
     return this.http.put<any>(`${this.urlBase}/update-checklist`, lData, { headers: head })
   }

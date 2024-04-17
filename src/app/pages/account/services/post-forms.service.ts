@@ -14,7 +14,11 @@ export class PostFormsService {
   constructor(private http: HttpClient) { }
 
   public registerStudents(regStudent: RegisterStudent): Observable<any> {
-    const token = localStorage.getItem('token') || {}
+    let token:any = ''
+
+    if (typeof localStorage !== 'undefined'){
+      token = localStorage.getItem('token') || {}
+    }
 
     let head = new HttpHeaders()
         .set('Content-Type', 'application/json')

@@ -20,25 +20,27 @@ export class ChecklistComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.id_student = params['id_student'])
-    
+
     this.getBasicInfo()
   }
 
   getBasicInfo() {
-    this.formsService.getBasicInfo(this.id_student).subscribe({
-      next: (response) => {
-        this.basicInfo = {
-          studentName: response.name,
-          studentAge: response.age,
-          professorName: localStorage.getItem('ProfessorName') || ''
-        }
+    if (typeof localStorage !== 'undefined') {
+      this.formsService.getBasicInfo(this.id_student).subscribe({
+        next: (response) => {
+          this.basicInfo = {
+            studentName: response.name,
+            studentAge: response.age,
+            professorName: localStorage.getItem('ProfessorName') || ''
+          }
 
-        this.getQuizQuestions()
-      },
-      error: (response) => {
-        console.log(response)
-      }
-    })
+          this.getQuizQuestions()
+        },
+        error: (response) => {
+          console.log(response)
+        }
+      })
+    }
   }
 
   getQuizQuestions() {
@@ -52,7 +54,7 @@ export class ChecklistComponent implements OnInit {
       }
     })
   }
-  
+
   studentQuestRegister() {
     this.answersList.forEach((value, index) => {
       let newAnswer: StudentsQuestionnaire = {

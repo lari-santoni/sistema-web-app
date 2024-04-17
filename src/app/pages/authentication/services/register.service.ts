@@ -15,14 +15,17 @@ export class RegisterService {
 
   //Chamar API
   public registerProfessor(register: RegisterRequest): Observable<any> {
+    let token:any = ''
 
-    const token = localStorage.getItem('token') || {}
+    if (typeof localStorage !== 'undefined'){
+      token = localStorage.getItem('token') || {}
+    }
 
     let head = new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set('Access-Control-Allow-Origin', '*')
         .set('Authorization', `Bearer ${token}`)
-        
+
     return this.http.post<any>(`${this.urlBase}/account`, register, { headers: head })
   }
 }

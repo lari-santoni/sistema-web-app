@@ -23,7 +23,7 @@ export class ChecklistUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.id_student = params['id_student'])
-    
+
     this.getBasicInfo()
   }
 
@@ -32,20 +32,22 @@ export class ChecklistUpdateComponent implements OnInit {
   }
 
   getBasicInfo() {
-    this.formService.getBasicInfo(this.id_student).subscribe({
-      next: (response) => {
-        this.basicInfo = {
-          studentName: response.name,
-          studentAge: response.age,
-          professorName: localStorage.getItem('ProfessorName') || ''
-        }
+    if (typeof localStorage !== 'undefined') {
+      this.formService.getBasicInfo(this.id_student).subscribe({
+        next: (response) => {
+          this.basicInfo = {
+            studentName: response.name,
+            studentAge: response.age,
+            professorName: localStorage.getItem('ProfessorName') || ''
+          }
 
-        this.getQuestionnaire()
-      },
-      error: (response) => {
-        console.log(response)
-      }
-    })
+          this.getQuestionnaire()
+        },
+        error: (response) => {
+          console.log(response)
+        }
+      })
+    }
   }
 
   getQuestionnaire(){

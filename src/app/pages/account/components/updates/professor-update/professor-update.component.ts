@@ -25,7 +25,12 @@ export class ProfessorUpdateComponent implements OnInit {
   }
 
   getProfessor() {
-    const id_professor = localStorage.getItem('ProfessorCod') || ''
+    let id_professor = ''
+
+    if (typeof localStorage !== 'undefined') {
+      id_professor = localStorage.getItem('ProfessorCod') || ''
+    }
+
     this.updateService.getProfessor(id_professor).subscribe({
       next: (response) => {
         this.upProfData = {

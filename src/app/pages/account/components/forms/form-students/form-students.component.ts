@@ -14,7 +14,9 @@ export class FormStudentsComponent {
   id_student: string = ''
 
   constructor(private formService: PostFormsService, private router: Router) {
-    this.regStudent.professorId = localStorage.getItem('ProfessorName') || ''
+    if (typeof localStorage !== 'undefined'){
+      this.regStudent.professorId = localStorage.getItem('ProfessorName') || ''
+    }
   }
 
   backHomeProf(){
@@ -24,7 +26,9 @@ export class FormStudentsComponent {
   @ViewChild('formStudent') formStudent!: NgForm;
 
   studentRegister() {
-    this.regStudent.professorId = localStorage.getItem('ProfessorCod') || ''
+    if (typeof localStorage !== 'undefined'){
+      this.regStudent.professorId = localStorage.getItem('ProfessorName') || ''
+    }
 
     this.formService.registerStudents(this.regStudent).subscribe({
       next: (response) => {

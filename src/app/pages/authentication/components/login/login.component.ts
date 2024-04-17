@@ -19,12 +19,14 @@ export class LoginComponent {
   getToken() {
     this.loginService.getLogin(this.login).subscribe({
       next: (response) => {
-        localStorage.setItem('token', response.access_token)
-        localStorage.setItem('ProfessorName', response.prof)
-        localStorage.setItem('ProfessorCod', response.profId)
+        if (typeof localStorage !== 'undefined'){
+          localStorage.setItem('token', response.access_token)
+          localStorage.setItem('ProfessorName', response.prof)
+          localStorage.setItem('ProfessorCod', response.profId)
+        }
 
         const adm = response.is_admin
-        
+
         if(adm) {
           this.router.navigate(['/adm-home'])
         }else {

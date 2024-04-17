@@ -25,7 +25,12 @@ export class UpdateComponent implements OnInit{
   }
 
   getAdm() {
-    const id_adm = localStorage.getItem('ProfessorCod') || ''
+    let id_adm = ''
+
+    if (typeof localStorage !== 'undefined'){
+      id_adm = localStorage.getItem('ProfessorCod') || ''
+    }
+
     this.updateAdmService.getProfessor(id_adm).subscribe({
       next: (response) => {
         this.upAdmData = {
@@ -67,7 +72,7 @@ export class UpdateComponent implements OnInit{
 
   sendAdmForm() {
     this.compareAdmPassword()
-    
+
     if(this.compare){
       this.upAdm()
     }

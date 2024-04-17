@@ -10,7 +10,9 @@ export class ProfessorSelectComponent {
   constructor(private router: Router) {}
 
   logOut() {
-    localStorage.removeItem('token')
+    if (typeof localStorage !== 'undefined'){
+      localStorage.removeItem('token')
+    }
     this.router.navigate(['/'])
   }
 

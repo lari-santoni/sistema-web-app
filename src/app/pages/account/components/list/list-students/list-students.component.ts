@@ -41,7 +41,9 @@ export class ListStudentsComponent implements AfterViewInit {
   }
 
   getLocal() {
-    this.professorName = localStorage.getItem('ProfessorName') || ''
-    this.professorId = localStorage.getItem('ProfessorCod') || ''
+    if (typeof localStorage !== 'undefined'){
+      this.professorName = localStorage.getItem('ProfessorName') || ''
+      this.professorId = localStorage.getItem('ProfessorCod') || ''
+    }
   }
 }
