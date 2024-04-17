@@ -13,12 +13,13 @@ import { UpdateComponent } from './pages/authentication/components/update/update
 import { ProfessorUpdateComponent } from './pages/account/components/updates/professor-update/professor-update.component';
 import { ChecklistUpdateComponent } from './pages/account/components/updates/checklist-update/checklist-update.component';
 import { NoReportComponent } from './pages/account/components/forms/no-report/no-report.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'update', component: UpdateComponent },
+  { path: 'update', component: UpdateComponent, canActivate: [AuthGuard] },
   { path: 'student', component: FormStudentsComponent},
   { path: 'professor-home', component: StudentSelectComponent },
   { path: 'update-prof', component: ProfessorUpdateComponent},

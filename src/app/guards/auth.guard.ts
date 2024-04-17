@@ -1,9 +1,16 @@
-import { Injectable } from '@angular/core';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard {
+export const AuthGuard: CanActivateFn = (route, state) => {
 
-  constructor() { }
-}
+  const router = inject(Router);
+  const token = localStorage.getItem('token');
+
+  if(token !== null){
+    return true;
+  }
+  else {
+    router.navigateByUrl('/login')
+    return false;
+  }
+};
