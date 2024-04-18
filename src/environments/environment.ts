@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  urlBase: 'http://localhost:3333',
+  urlBase: 'https://mackleaps.mackenzie.br/sci-pcn-back-api',
   token: ''
 };
